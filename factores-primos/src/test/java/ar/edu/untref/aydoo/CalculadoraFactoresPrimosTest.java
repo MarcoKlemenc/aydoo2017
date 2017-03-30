@@ -37,8 +37,8 @@ public class CalculadoraFactoresPrimosTest {
 	
 	@Test
 	public void testTrescientosCincuentaYNueve() {
-		List<Integer> factores = CalculadoraFactoresPrimos.calcularFactoresPrimos(359);
-		List<Integer> esperado = new ArrayList<Integer>(Arrays.asList(359));
+		ArrayList<Integer> factores = CalculadoraFactoresPrimos.calcularFactoresPrimos(359);
+		ArrayList<Integer> esperado = new ArrayList<Integer>(Arrays.asList(359));
 		Assert.assertEquals(esperado, factores);
 	}
 	
