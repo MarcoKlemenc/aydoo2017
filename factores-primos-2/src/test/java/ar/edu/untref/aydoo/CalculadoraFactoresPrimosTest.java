@@ -1,72 +1,40 @@
 package ar.edu.untref.aydoo;
 
-import java.util.Arrays;
 import java.util.ArrayList;
 import org.junit.Test;
 import org.junit.Assert;
 
 public class CalculadoraFactoresPrimosTest {
-	
+
 	@Test
-	public void testUno() {
+	public void testUnoEnPretty() {
 		ArrayList<Integer> factores = CalculadoraFactoresPrimos.calcularFactoresPrimos(1);
-		ArrayList<Integer> esperado = new ArrayList<Integer>();
-		Assert.assertEquals(esperado, factores);
+		String texto = CalculadoraFactoresPrimos.formatearPretty(factores, "1");
+		String esperado = "Factores primos 1: ";
+		Assert.assertEquals(esperado, texto);
 	}
-    
+
 	@Test
-	public void testDos() {
+	public void testUnoEnQuiet() {
+		ArrayList<Integer> factores = CalculadoraFactoresPrimos.calcularFactoresPrimos(1);
+		String texto = CalculadoraFactoresPrimos.formatearQuiet(factores);
+		String esperado = "";
+		Assert.assertEquals(esperado, texto);
+	}
+
+	@Test
+	public void testDosEnPretty() {
 		ArrayList<Integer> factores = CalculadoraFactoresPrimos.calcularFactoresPrimos(2);
-		ArrayList<Integer> esperado = new ArrayList<Integer>(Arrays.asList(2));
-		Assert.assertEquals(esperado, factores);
+		String texto = CalculadoraFactoresPrimos.formatearPretty(factores, "2");
+		String esperado = "Factores primos 2: 2 ";
+		Assert.assertEquals(esperado, texto);
 	}
-	
+
 	@Test
-	public void testCuarenta() {
-		ArrayList<Integer> factores = CalculadoraFactoresPrimos.calcularFactoresPrimos(40);
-		ArrayList<Integer> esperado = new ArrayList<Integer>(Arrays.asList(2, 2, 2, 5));
-		Assert.assertEquals(esperado, factores);
-	}
-	
-	@Test
-	public void testNoventa() {
-		ArrayList<Integer> factores = CalculadoraFactoresPrimos.calcularFactoresPrimos(90);
-		ArrayList<Integer> esperado = new ArrayList<Integer>(Arrays.asList(2, 3, 3, 5));
-		Assert.assertEquals(esperado, factores);
-	}
-	
-	@Test
-	public void testTrescientosCincuentaYNueve() {
-		ArrayList<Integer> factores = CalculadoraFactoresPrimos.calcularFactoresPrimos(359);
-		ArrayList<Integer> esperado = new ArrayList<Integer>(Arrays.asList(359));
-		Assert.assertEquals(esperado, factores);
-	}
-	
-	@Test
-	public void testTrescientosSesenta() {
-		ArrayList<Integer> factores = CalculadoraFactoresPrimos.calcularFactoresPrimos(360);
-		ArrayList<Integer> esperado = new ArrayList<Integer>(Arrays.asList(2, 2, 2, 3, 3, 5));
-		Assert.assertEquals(esperado, factores);
-	}
-	
-	@Test
-	public void testOchocientosSesentaYCuatro()	{
-		ArrayList<Integer> factores = CalculadoraFactoresPrimos.calcularFactoresPrimos(864);
-		ArrayList<Integer> esperado = new ArrayList<Integer>(Arrays.asList(2, 2, 2, 2, 2, 3, 3, 3));
-		Assert.assertEquals(esperado, factores);
-	}
-	
-	@Test
-	public void testNovecientosSesenta() {
-		ArrayList<Integer> factores = CalculadoraFactoresPrimos.calcularFactoresPrimos(960);
-		ArrayList<Integer> esperado = new ArrayList<Integer>(Arrays.asList(2, 2, 2, 2, 2, 2, 3, 5));
-		Assert.assertEquals(esperado, factores);
-	}
-	
-	@Test
-	public void testMilOchocientos() {
-		ArrayList<Integer> factores = CalculadoraFactoresPrimos.calcularFactoresPrimos(1800);
-		ArrayList<Integer> esperado = new ArrayList<Integer>(Arrays.asList(2, 2, 2, 3, 3, 5, 5));
-		Assert.assertEquals(esperado, factores);
+	public void testDosEnQuiet() {
+		ArrayList<Integer> factores = CalculadoraFactoresPrimos.calcularFactoresPrimos(2);
+		String texto = CalculadoraFactoresPrimos.formatearQuiet(factores);
+		String esperado = "2\n";
+		Assert.assertEquals(esperado, texto);
 	}
 }
