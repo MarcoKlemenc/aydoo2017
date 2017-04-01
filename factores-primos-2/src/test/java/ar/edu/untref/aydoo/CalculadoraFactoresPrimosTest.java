@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import org.junit.Test;
 import org.junit.Assert;
@@ -36,5 +38,57 @@ public class CalculadoraFactoresPrimosTest {
 		String texto = CalculadoraFactoresPrimos.formatearQuiet(factores);
 		String esperado = "2\n";
 		Assert.assertEquals(esperado, texto);
+	}
+
+	@Test
+	public void testEspecificandoFormatoIncorrecto() {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(baos));
+		String esperado = "Formato no aceptado. Las opciones posibles son: pretty o quiet.";
+		String[] argumentos = { "2", "--format=nada" };
+
+		CalculadoraFactoresPrimos.main(argumentos);
+		String salida = new String(baos.toByteArray());
+
+		Assert.assertTrue(salida.contains(esperado));
+	}
+
+	@Test
+	public void testDosSinEspecificarFormato() {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(baos));
+		String esperado = "Factores primos 2: 2 ";
+		String[] argumentos = { "2" };
+
+		CalculadoraFactoresPrimos.main(argumentos);
+		String salida = new String(baos.toByteArray());
+
+		Assert.assertTrue(salida.contains(esperado));
+	}
+
+	@Test
+	public void testDosEspecificandoFormatoPretty() {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(baos));
+		String esperado = "Factores primos 2: 2 ";
+		String[] argumentos = { "2", "--format=pretty" };
+
+		CalculadoraFactoresPrimos.main(argumentos);
+		String salida = new String(baos.toByteArray());
+
+		Assert.assertTrue(salida.contains(esperado));
+	}
+
+	@Test
+	public void testDosEspecificandoFormatoQuiet() {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(baos));
+		String esperado = "2";
+		String[] argumentos = { "2", "--format=quiet" };
+
+		CalculadoraFactoresPrimos.main(argumentos);
+		String salida = new String(baos.toByteArray());
+
+		Assert.assertTrue(salida.contains(esperado));
 	}
 }
