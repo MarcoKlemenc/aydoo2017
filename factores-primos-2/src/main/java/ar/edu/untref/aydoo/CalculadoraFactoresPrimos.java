@@ -16,7 +16,6 @@ public class CalculadoraFactoresPrimos {
 				}
 			}
 		}
-		return factoresPrimos;
 	}
 
 	public static String formatearPretty(ArrayList<Integer> primos, String argumento) {
