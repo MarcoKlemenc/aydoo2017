@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import org.junit.Test;
 import org.junit.Assert;
 
+/*
+ * Uso ByteArrayOutputStream y PrintStream para tomar las salidas por consola que hace el main.
+ * Después las comparo con lo que debería obtener.
+ * Las pruebas giran en base a pocos números porque hay muchos casos cubiertos en las del ejercicio original.
+ * Decidí enfocarme más en probar salidas y lectura de argumentos.
+ */
 public class CalculadoraFactoresPrimos2Test {
 
     @Test
@@ -57,6 +63,19 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
+    public void testEspecificandoOtroArgumento() {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(baos));
+        String esperado = "Factores primos 2: 2 \n";
+        String[] argumentos = { "2", "--algo=nada" };
+
+        CalculadoraFactoresPrimos2.main(argumentos);
+        String salida = new String(baos.toByteArray());
+
+        Assert.assertEquals(esperado, salida);
+    }
+
+    @Test
     public void testEspecificandoFormatoIncorrecto() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
@@ -96,11 +115,37 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
+    public void testUnoEspecificandoFormatoPrettyIncluyendoMayusculas() {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(baos));
+        String esperado = "Factores primos 1: \n";
+        String[] argumentos = { "1", "--format=pReTtY" };
+
+        CalculadoraFactoresPrimos2.main(argumentos);
+        String salida = new String(baos.toByteArray());
+
+        Assert.assertEquals(esperado, salida);
+    }
+
+    @Test
     public void testUnoEspecificandoFormatoQuiet() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         String esperado = "\n";
         String[] argumentos = { "1", "--format=quiet" };
+
+        CalculadoraFactoresPrimos2.main(argumentos);
+        String salida = new String(baos.toByteArray());
+
+        Assert.assertEquals(esperado, salida);
+    }
+
+    @Test
+    public void testUnoEspecificandoFormatoQuietIncluyendoMayusculas() {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(baos));
+        String esperado = "\n";
+        String[] argumentos = { "1", "--format=qUiEt" };
 
         CalculadoraFactoresPrimos2.main(argumentos);
         String salida = new String(baos.toByteArray());

@@ -3,6 +3,11 @@ package ar.edu.untref.aydoo;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/*
+ * Separé el formato del main y la generación de la lista para poder testearlo por separado.
+ * Además no estaba seguro de si iba a poder testear la salida a consola del main.
+ */
+
 public class CalculadoraFactoresPrimos2 {
 
     public static ArrayList<Integer> calcularFactoresPrimos(int numero) {
@@ -39,13 +44,16 @@ public class CalculadoraFactoresPrimos2 {
     public static final void main(String arg[]) {
         ArrayList<Integer> primos = calcularFactoresPrimos(Integer.parseInt(arg[0]));
         if (arg.length > 1 && arg[1].substring(0, 9).equals("--format=")) {
-            String argumento = arg[1].substring(9);
-            if (argumento.toLowerCase().equals("pretty")) {
-                System.out.println(formatearPretty(primos, arg[0]));
-            } else if (argumento.toLowerCase().equals("quiet")) {
-                System.out.println(formatearQuiet(primos));
-            } else {
-                System.out.println("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
+            switch (arg[1].substring(9).toLowerCase()) {
+                case "pretty":
+                    System.out.println(formatearPretty(primos, arg[0]));
+                    break;
+                case "quiet":
+                    System.out.println(formatearQuiet(primos));
+                    break;
+                default:
+                    System.out.println("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
+                    break;
             }
         } else {
             System.out.println(formatearPretty(primos, arg[0]));
