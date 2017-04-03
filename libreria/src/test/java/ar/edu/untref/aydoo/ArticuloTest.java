@@ -12,10 +12,13 @@ public class ArticuloTest {
         Assert.assertEquals(10, ejemplo.getPrecio(), 0.0);
     }
 
-    @Test
-    public void testCrearArticuloPrecioNegativoDeberiaInvertirlo() {
+    @Test(expected = Error.class)
+    public void testCrearArticuloPrecioNegativoDeberiaDarError() {
         Articulo negativo = new Articulo("Precio negativo", -15);
-        Assert.assertEquals("Precio negativo", negativo.getNombre());
-        Assert.assertEquals(15, negativo.getPrecio(), 0.0);
+    }
+
+    @Test(expected = Error.class)
+    public void testCrearArticuloPrecioCeroDeberiaDarError() {
+        Articulo cero = new Articulo("Precio 0", 0);
     }
 }

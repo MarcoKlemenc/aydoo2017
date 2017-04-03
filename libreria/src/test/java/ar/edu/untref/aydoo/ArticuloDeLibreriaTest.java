@@ -6,16 +6,19 @@ import org.junit.Test;
 public class ArticuloDeLibreriaTest {
 
     @Test
-    public void testCrearBiromeDeberiaFijarNombreYPrecioConIva(){
+    public void testCrearBiromeDeberiaFijarNombreYPrecioConIva() {
         ArticuloDeLibreria birome = new ArticuloDeLibreria("Birome", 5);
         Assert.assertEquals("Birome", birome.getNombre());
         Assert.assertEquals(6.05, birome.getPrecio(), 0.0);
     }
 
-    @Test
-    public void testCrearBiromeConPrecioNegativoDeberiaInvertir(){
+    @Test(expected = Error.class)
+    public void testCrearBiromePrecioNegativoDeberiaDarError() {
         ArticuloDeLibreria birome = new ArticuloDeLibreria("Birome", -10);
-        Assert.assertEquals("Birome", birome.getNombre());
-        Assert.assertEquals(12.1, birome.getPrecio(), 0.0);
+    }
+
+    @Test(expected = Error.class)
+    public void testCrearBiromePrecioCeroDeberiaDarError() {
+        ArticuloDeLibreria birome = new ArticuloDeLibreria("Birome", 0);
     }
 }
