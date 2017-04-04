@@ -7,8 +7,8 @@ public class Libreria {
 
     /*
      * Voy guardando los montos a cobrar a medida que se realizan las compras para que operaciones futuras (como la
-     * modificación de un precio o la eliminación de un producto) no alteren los valores.
-     * La suscripción se realiza solamente sobre un mes, pero para el caso suministrado no hace falta más.
+     * modificacion de un precio o la eliminacion de un producto) no alteren los valores.
+     * La suscripcion se realiza solamente sobre un mes, pero para el caso suministrado no hace falta mas.
      */
     private ArrayList<Cliente> clientes;
     private ArrayList<Articulo> articulos;
