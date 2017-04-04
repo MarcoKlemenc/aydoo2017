@@ -11,6 +11,7 @@ public class PublicacionTest {
         Assert.assertEquals("New York Times", nytimes.getNombre());
         Assert.assertEquals(20, nytimes.getPrecio(), 0.0);
         Assert.assertEquals(1, nytimes.getPeriodicidad());
+        Assert.assertEquals(30, nytimes.getEdicionesPorMes());
     }
 
     @Test
@@ -19,6 +20,7 @@ public class PublicacionTest {
         Assert.assertEquals("Barcelona", barcelona.getNombre());
         Assert.assertEquals(30, barcelona.getPrecio(), 0.0);
         Assert.assertEquals(14, barcelona.getPeriodicidad());
+        Assert.assertEquals(2, barcelona.getEdicionesPorMes());
     }
 
     @Test(expected = Error.class)

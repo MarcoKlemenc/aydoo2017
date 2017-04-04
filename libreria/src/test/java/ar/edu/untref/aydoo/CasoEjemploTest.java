@@ -39,11 +39,19 @@ public class CasoEjemploTest {
 
     @Test
     public void testCasoUno() {
-        libreria.vender(juan, elHobbit, "agosto");
-        libreria.vender(juan, lapicera, "agosto");
-        libreria.vender(juan, lapicera, "agosto");
-        libreria.vender(juan, elGrafico, "agosto");
-        Double monto = libreria.calcularMontoACobrar("agosto", juan);
+        libreria.vender(juan, elHobbit, Mes.AGOSTO);
+        libreria.vender(juan, lapicera, Mes.AGOSTO);
+        libreria.vender(juan, lapicera, Mes.AGOSTO);
+        libreria.vender(juan, elGrafico, Mes.AGOSTO);
+        Double monto = libreria.calcularMontoACobrar(Mes.AGOSTO, juan);
         Assert.assertEquals(92.1, monto, 0);
+    }
+
+    @Test
+    public void testCasoDos() {
+        libreria.suscribir(maria, barcelona, Mes.ENERO, 12);
+        libreria.vender(maria, pagina12, Mes.ENERO);
+        Double monto = libreria.calcularMontoACobrar(Mes.ENERO, maria);
+        Assert.assertEquals(44, monto, 0);
     }
 }

@@ -5,14 +5,19 @@ import java.util.HashMap;
 
 public class Libreria {
 
+    /*
+     * Voy guardando los montos a cobrar a medida que se realizan las compras para que operaciones futuras (como la
+     * modificación de un precio o la eliminación de un producto) no alteren los valores.
+     * La suscripción se realiza solamente sobre un mes, pero para el caso suministrado no hace falta más.
+     */
     private ArrayList<Cliente> clientes;
     private ArrayList<Articulo> articulos;
-    private HashMap<String, HashMap<Cliente, Double>> montosPorMes;
+    private HashMap<Mes, HashMap<Cliente, Double>> montosPorMes;
 
     public Libreria() {
         this.clientes = new ArrayList<Cliente>();
         this.articulos = new ArrayList<Articulo>();
-        this.montosPorMes = new HashMap<String, HashMap<Cliente, Double>>();
+        this.montosPorMes = new HashMap<Mes, HashMap<Cliente, Double>>();
     }
 
     public ArrayList<Cliente> getClientes() {
@@ -31,7 +36,7 @@ public class Libreria {
         this.articulos.add(articulo);
     }
 
-    public void vender(Cliente cliente, Articulo articulo, String mes) {
+    public void vender(Cliente cliente, Articulo articulo, Mes mes) {
         if (this.clientes.contains(cliente) && this.articulos.contains(articulo)) {
             cliente.comprar(articulo);
             if (!montosPorMes.containsKey(mes)) {
@@ -44,13 +49,21 @@ public class Libreria {
         }
     }
 
-    public void suscribir(Cliente cliente, Publicacion publicacion, String mes, Integer meses) {
+    public void suscribir(Cliente cliente, Publicacion publicacion, Mes mes, Integer meses) {
         if (this.clientes.contains(cliente) && this.articulos.contains(publicacion)) {
             cliente.suscribirse(publicacion, meses == 12);
+            if (!montosPorMes.containsKey(mes)) {
+                montosPorMes.put(mes, new HashMap<Cliente, Double>());
+            }
+            HashMap<Cliente, Double> clientesDeMes = montosPorMes.get(mes);
+            Double precioMensual = publicacion.getPrecio() * publicacion.getEdicionesPorMes() * (meses == 12 ? 0.8 : 1);
+            if (!clientesDeMes.containsKey(cliente)) {
+                clientesDeMes.put(cliente, precioMensual);
+            } else clientesDeMes.put(cliente, clientesDeMes.get(cliente) + precioMensual);
         }
     }
 
-    public Double calcularMontoACobrar(String mes, Cliente cliente) {
+    public Double calcularMontoACobrar(Mes mes, Cliente cliente) {
         return montosPorMes.get(mes).get(cliente);
     }
 }

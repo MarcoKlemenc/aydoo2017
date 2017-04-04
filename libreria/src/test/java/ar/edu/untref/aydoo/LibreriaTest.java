@@ -35,7 +35,7 @@ public class LibreriaTest {
         Articulo libro = new Articulo("Libro", 55);
         trampolin.registrar(fulano);
         trampolin.registrar(libro);
-        trampolin.vender(fulano, libro, "Febrero");
+        trampolin.vender(fulano, libro, Mes.FEBRERO);
         Assert.assertEquals(libro, fulano.getArticulosComprados().get(0));
     }
 
@@ -45,7 +45,7 @@ public class LibreriaTest {
         Cliente fulano = new Cliente("Fulano", "Peron 789", 11111111);
         Articulo libro = new Articulo("Libro", 55);
         trampolin.registrar(fulano);
-        trampolin.vender(fulano, libro, "Enero");
+        trampolin.vender(fulano, libro, Mes.ENERO);
         Assert.assertEquals(0, fulano.getArticulosComprados().size());
     }
 
@@ -55,7 +55,7 @@ public class LibreriaTest {
         Cliente fulano = new Cliente("Fulano", "Peron 789", 11111111);
         Articulo libro = new Articulo("Libro", 55);
         trampolin.registrar(libro);
-        trampolin.vender(fulano, libro, "Enero");
+        trampolin.vender(fulano, libro, Mes.ENERO);
         Assert.assertEquals(0, fulano.getArticulosComprados().size());
     }
 
@@ -66,7 +66,7 @@ public class LibreriaTest {
         Publicacion diario = new Publicacion("Diario", 15, 1);
         trampolin.registrar(fulano);
         trampolin.registrar(diario);
-        trampolin.suscribir(fulano, diario, "Marzo", 3);
+        trampolin.suscribir(fulano, diario, Mes.MARZO, 3);
         Assert.assertTrue(fulano.getSuscripciones().keySet().contains(diario));
     }
 
@@ -76,7 +76,7 @@ public class LibreriaTest {
         Cliente fulano = new Cliente("Fulano", "Peron 789", 11111111);
         Publicacion diario = new Publicacion("Diario", 15, 1);
         trampolin.registrar(fulano);
-        trampolin.suscribir(fulano, diario, "Enero", 6);
+        trampolin.suscribir(fulano, diario, Mes.ENERO, 6);
         Assert.assertEquals(0, fulano.getSuscripciones().keySet().size());
     }
 
@@ -86,7 +86,7 @@ public class LibreriaTest {
         Cliente fulano = new Cliente("Fulano", "Peron 789", 11111111);
         Publicacion diario = new Publicacion("Diario", 15, 1);
         trampolin.registrar(diario);
-        trampolin.suscribir(fulano, diario, "Enero", 4);
+        trampolin.suscribir(fulano, diario, Mes.ENERO, 4);
         Assert.assertEquals(0, fulano.getSuscripciones().keySet().size());
     }
 }

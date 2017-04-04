@@ -16,4 +16,8 @@ public class Publicacion extends Articulo {
     public int getPeriodicidad() {
         return this.periodicidad;
     }
+
+    public int getEdicionesPorMes() {
+        return 30 / this.periodicidad;
+    }
 }
