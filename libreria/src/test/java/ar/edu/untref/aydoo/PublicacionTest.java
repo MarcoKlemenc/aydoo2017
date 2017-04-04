@@ -22,6 +22,16 @@ public class PublicacionTest {
     }
 
     @Test(expected = Error.class)
+    public void testCrearDiarioNombreNuloDeberiaDarError() {
+        Publicacion nombreNulo = new Publicacion(null, 20, 1);
+    }
+
+    @Test(expected = Error.class)
+    public void testCrearDiarioNombreVacioDeberiaDarError() {
+        Publicacion nombreVacio = new Publicacion("", 20, 1);
+    }
+
+    @Test(expected = Error.class)
     public void testCrearDiarioPrecioNegativoDeberiaDarError() {
         Publicacion nytimes = new Publicacion("New York Times", -35.0, 1);
     }

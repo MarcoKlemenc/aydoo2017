@@ -13,6 +13,16 @@ public class ArticuloDeLibreriaTest {
     }
 
     @Test(expected = Error.class)
+    public void testCrearBiromeNombreNuloDeberiaDarError() {
+        ArticuloDeLibreria nombreNulo = new ArticuloDeLibreria(null, 5);
+    }
+
+    @Test(expected = Error.class)
+    public void testCrearBiromeNombreVacioDeberiaDarError() {
+        ArticuloDeLibreria nombreVacio = new ArticuloDeLibreria("", 5);
+    }
+
+    @Test(expected = Error.class)
     public void testCrearBiromePrecioNegativoDeberiaDarError() {
         ArticuloDeLibreria birome = new ArticuloDeLibreria("Birome", -10);
     }

@@ -10,7 +10,7 @@ public class Publicacion extends Articulo {
         super(nombre, precio);
         if (periodicidad > 0) {
             this.periodicidad = periodicidad;
-        } else throw new Error("Periodicidad invalida");
+        } else throw new Error("Datos invalidos");
     }
 
     public int getPeriodicidad() {
