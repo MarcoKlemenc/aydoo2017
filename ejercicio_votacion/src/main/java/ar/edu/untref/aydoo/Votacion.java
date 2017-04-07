@@ -6,79 +6,79 @@ import java.util.Set;
 
 public class Votacion {
 
-	public Set<Provincia> provincias = new HashSet<Provincia>();
-	public Set<Candidato> candidatos = new HashSet<Candidato>();
-	public Set<Elector> electores = new HashSet<Elector>();
+    // utilizo sets para asegurarme de que no se repitan elementos
+    public Set<Provincia> provincias = new HashSet<Provincia>();
+    public Set<Candidato> candidatos = new HashSet<Candidato>();
+    public Set<Elector> electores = new HashSet<Elector>();
 
-	public void emitirVoto(Elector votante, Candidato elegido) {
-		if (electores.contains(votante) && candidatos.contains(elegido)) {
-			votante.votar(elegido);
-		} else {
-			throw new Error("El votante o candidato no existe");
-		}
-	}
+    public void emitirVoto(Elector votante, Candidato elegido) {
+        if (electores.contains(votante) && candidatos.contains(elegido)) {
+            votante.votar(elegido);
+        } else {
+            throw new Error("El votante o candidato no existe");
+        }
+    }
 
-	public void agregar(Provincia provincia) {
-		provincias.add(provincia);
-	}
+    public void agregar(Provincia provincia) {
+        provincias.add(provincia);
+    }
 
-	public void agregar(Candidato candidato) {
-		candidatos.add(candidato);
-	}
+    public void agregar(Candidato candidato) {
+        candidatos.add(candidato);
+    }
 
-	public void agregar(Elector elector) {
-		electores.add(elector);
-	}
+    public void agregar(Elector elector) {
+        electores.add(elector);
+    }
 
-	public String buscarMasVotadoEnMapa(HashMap<String, Integer> votos) {
-		if (!votos.isEmpty()) {
-			String masVotado = "";
-			int mayorCantidadVotos = 0;
-			for (String clave : votos.keySet()) {
-				int cantidad = votos.get(clave);
-				if (cantidad > mayorCantidadVotos) {
-					masVotado = clave;
-					mayorCantidadVotos = cantidad;
-				}
-			}
-			return masVotado;
-		} else {
-			throw new Error("No hay votos registrados");
-		}
-	}
+    private Object buscarMasVotadoEnMapa(HashMap<Object, Integer> votos) {
+        if (!votos.isEmpty()) {
+            Object masVotado = null;
+            int mayorCantidadVotos = 0;
+            for (Object o : votos.keySet()) {
+                int cantidad = votos.get(o);
+                if (cantidad > mayorCantidadVotos) {
+                    masVotado = o;
+                    mayorCantidadVotos = cantidad;
+                }
+            }
+            return masVotado;
+        } else {
+            throw new Error("No hay votos registrados");
+        }
+    }
 
-	public String calcularCandidatoMasVotado() {
-		HashMap<String, Integer> votosTotales = new HashMap<String, Integer>();
-		for (Provincia p : this.provincias) {
-			HashMap<Candidato, Integer> votos = p.getVotos();
-			for (Candidato candidato : votos.keySet()) {
-				String nombre = candidato.getNombre();
-				if (!votosTotales.containsKey(nombre)) {
-					votosTotales.put(nombre, votos.get(candidato));
-				} else {
-					votosTotales.put(nombre, votosTotales.get(nombre) + votos.get(candidato));
-				}
-			}
-		}
-		return buscarMasVotadoEnMapa(votosTotales);
-	}
+    public Candidato calcularCandidatoMasVotado() {
+        HashMap<Object, Integer> votosTotales = new HashMap<Object, Integer>();
+        for (Provincia p : this.provincias) {
+            HashMap<Candidato, Integer> votos = p.getVotos();
+            for (Candidato c : votos.keySet()) {
+                if (!votosTotales.containsKey(c)) {
+                    votosTotales.put(c, votos.get(c));
+                } else {
+                    votosTotales.put(c, votosTotales.get(c) + votos.get(c));
+                }
+            }
+        }
+        return (Candidato) buscarMasVotadoEnMapa(votosTotales);
+    }
 
-	public String calcularPartidoMasVotadoEnProvincia(Provincia provincia) {
-		if (provincias.contains(provincia)) {
-			HashMap<String, Integer> votosPorPartido = new HashMap<String, Integer>();
-			HashMap<Candidato, Integer> votos = provincia.getVotos();
-			for (Candidato c : votos.keySet()) {
-				String partido = c.getPartido();
-				if (!votosPorPartido.containsKey(partido)) {
-					votosPorPartido.put(partido, votos.get(c));
-				} else {
-					votosPorPartido.put(partido, votosPorPartido.get(partido) + votos.get(c));
-				}
+    public String calcularPartidoMasVotadoEnProvincia(Provincia provincia) {
+        if (provincias.contains(provincia)) {
+            HashMap<Object, Integer> votosPorPartido = new HashMap<Object, Integer>();
+            HashMap<Candidato, Integer> votos = provincia.getVotos();
+            for (Candidato c : votos.keySet()) {
+                String partido = c.getPartido();
+                if (!votosPorPartido.containsKey(partido)) {
+                    votosPorPartido.put(partido, votos.get(c));
+                } else {
+                    votosPorPartido.put(partido, votosPorPartido.get(partido) + votos.get(c));
+                }
 
-			}
-			return buscarMasVotadoEnMapa(votosPorPartido);
-		} else {
-			throw new Error("La provincia no existe");
-		}
-	}
+            }
+            return (String) buscarMasVotadoEnMapa(votosPorPartido);
+        } else {
+            throw new Error("La provincia no existe");
+        }
+    }
 }
