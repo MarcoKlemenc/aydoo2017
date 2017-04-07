@@ -2,6 +2,7 @@ package ar.edu.untref.aydoo;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Votacion {
@@ -35,10 +36,10 @@ public class Votacion {
         if (!votos.isEmpty()) {
             Object masVotado = null;
             int mayorCantidadVotos = 0;
-            for (Object o : votos.keySet()) {
-                int cantidad = votos.get(o);
+            for (Map.Entry<Object, Integer> e : votos.entrySet()) {
+                int cantidad = e.getValue();
                 if (cantidad > mayorCantidadVotos) {
-                    masVotado = o;
+                    masVotado = e.getKey();
                     mayorCantidadVotos = cantidad;
                 }
             }
