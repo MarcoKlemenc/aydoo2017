@@ -1,11 +1,12 @@
 package ar.edu.untref.aydoo;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Provincia {
 
     private String nombre;
-    private HashMap<Candidato, Integer> votos;
+    private Map<Candidato, Integer> votos;
 
     public Provincia(String nombre) {
         this.nombre = nombre;
@@ -23,7 +24,7 @@ public class Provincia {
         return nombre;
     }
 
-    public HashMap<Candidato, Integer> getVotos() {
+    public Map<Candidato, Integer> getVotos() {
         return votos;
     }
 

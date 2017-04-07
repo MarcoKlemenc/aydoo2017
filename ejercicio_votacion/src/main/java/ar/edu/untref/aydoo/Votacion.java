@@ -32,7 +32,7 @@ public class Votacion {
         electores.add(elector);
     }
 
-    private Object buscarMasVotadoEnMapa(HashMap<Object, Integer> votos) {
+    private Object buscarMasVotadoEnMapa(Map<Object, Integer> votos) {
         if (!votos.isEmpty()) {
             Object masVotado = null;
             int mayorCantidadVotos = 0;
@@ -50,9 +50,9 @@ public class Votacion {
     }
 
     public Candidato calcularCandidatoMasVotado() {
-        HashMap<Object, Integer> votosTotales = new HashMap<Object, Integer>();
+        Map<Object, Integer> votosTotales = new HashMap<Object, Integer>();
         for (Provincia p : this.provincias) {
-            HashMap<Candidato, Integer> votos = p.getVotos();
+            Map<Candidato, Integer> votos = p.getVotos();
             for (Candidato c : votos.keySet()) {
                 if (!votosTotales.containsKey(c)) {
                     votosTotales.put(c, votos.get(c));
@@ -66,8 +66,8 @@ public class Votacion {
 
     public String calcularPartidoMasVotadoEnProvincia(Provincia provincia) {
         if (provincias.contains(provincia)) {
-            HashMap<Object, Integer> votosPorPartido = new HashMap<Object, Integer>();
-            HashMap<Candidato, Integer> votos = provincia.getVotos();
+            Map<Object, Integer> votosPorPartido = new HashMap<Object, Integer>();
+            Map<Candidato, Integer> votos = provincia.getVotos();
             for (Candidato c : votos.keySet()) {
                 String partido = c.getPartido();
                 if (!votosPorPartido.containsKey(partido)) {
