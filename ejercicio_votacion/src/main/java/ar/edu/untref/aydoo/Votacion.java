@@ -1,35 +1,33 @@
 package ar.edu.untref.aydoo;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Votacion {
 
-	public HashMap<String, Provincia> provincias = new HashMap<String, Provincia>();
-	public HashMap<String, Candidato> candidatos = new HashMap<String, Candidato>();
-	public HashMap<String, Elector> electores = new HashMap<String, Elector>();
+	public Set<Provincia> provincias = new HashSet<Provincia>();
+	public Set<Candidato> candidatos = new HashSet<Candidato>();
+	public Set<Elector> electores = new HashSet<Elector>();
 
-	public void emitirVoto(String votante, String elegido) {
-		if (electores.containsKey(votante) && candidatos.containsKey(elegido)) {
-			electores.get(votante).votar(candidatos.get(elegido));
+	public void emitirVoto(Elector votante, Candidato elegido) {
+		if (electores.contains(votante) && candidatos.contains(elegido)) {
+			votante.votar(elegido);
 		} else {
 			throw new Error("El votante o candidato no existe");
 		}
 	}
 
-	public void agregarProvincia(String nombre) {
-		provincias.put(nombre, new Provincia(nombre));
+	public void agregar(Provincia provincia) {
+		provincias.add(provincia);
 	}
 
-	public void agregarCandidato(String nombre, String partido) {
-		candidatos.put(nombre, new Candidato(nombre, partido));
+	public void agregar(Candidato candidato) {
+		candidatos.add(candidato);
 	}
 
-	public void agregarElector(String nombre, String provincia) {
-		if (provincias.containsKey(provincia)) {
-			electores.put(nombre, new Elector(nombre, provincias.get(provincia)));
-		} else {
-			throw new Error("La provincia no existe");
-		}
+	public void agregar(Elector elector) {
+		electores.add(elector);
 	}
 
 	public String buscarMasVotadoEnMapa(HashMap<String, Integer> votos) {
@@ -51,8 +49,7 @@ public class Votacion {
 
 	public String calcularCandidatoMasVotado() {
 		HashMap<String, Integer> votosTotales = new HashMap<String, Integer>();
-		for (String provincia : this.provincias.keySet()) {
-			Provincia p = this.provincias.get(provincia);
+		for (Provincia p : this.provincias) {
 			HashMap<Candidato, Integer> votos = p.getVotos();
 			for (Candidato candidato : votos.keySet()) {
 				String nombre = candidato.getNombre();
@@ -66,10 +63,10 @@ public class Votacion {
 		return buscarMasVotadoEnMapa(votosTotales);
 	}
 
-	public String calcularPartidoMasVotadoEnProvincia(String provincia) {
-		if (provincias.containsKey(provincia)) {
+	public String calcularPartidoMasVotadoEnProvincia(Provincia provincia) {
+		if (provincias.contains(provincia)) {
 			HashMap<String, Integer> votosPorPartido = new HashMap<String, Integer>();
-			HashMap<Candidato, Integer> votos = provincias.get(provincia).getVotos();
+			HashMap<Candidato, Integer> votos = provincia.getVotos();
 			for (Candidato c : votos.keySet()) {
 				String partido = c.getPartido();
 				if (!votosPorPartido.containsKey(partido)) {
