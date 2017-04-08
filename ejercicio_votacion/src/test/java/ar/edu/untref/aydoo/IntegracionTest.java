@@ -78,14 +78,14 @@ public class IntegracionTest {
     }
 
     @Test
-    public void testUnVoto() {
+    public void testUnicoVotoDeberiaGanarFulano() {
         p.emitirVoto(juanPerez, fulano);
         Assert.assertEquals(fulano, p.calcularCandidatoMasVotado());
         Assert.assertEquals("Partido A", p.calcularPartidoMasVotadoEnProvincia(buenosAires));
     }
 
     @Test
-    public void testUnVotoPorPersona() {
+    public void testUnVotoPorPersonaDeberiaGanarMengano() {
         p.emitirVoto(juanPerez, fulano);
         p.emitirVoto(joseGonzalez, zutano);
         p.emitirVoto(mariaRodriguez, mengano);
@@ -96,6 +96,19 @@ public class IntegracionTest {
         p.emitirVoto(estebanRodriguez, mengano);
         p.emitirVoto(juliaPerez, fulano);
         Assert.assertEquals(mengano, p.calcularCandidatoMasVotado());
+    }
+
+    @Test
+    public void testUnVotoPorPersonaDeberiaGanarAEnBuenosAiresYMendozaYBEnCordobaYSantaFe() {
+        p.emitirVoto(juanPerez, fulano);
+        p.emitirVoto(joseGonzalez, zutano);
+        p.emitirVoto(mariaRodriguez, mengano);
+        p.emitirVoto(diegoFernandez, menganito);
+        p.emitirVoto(sofiaPerez, fulanito);
+        p.emitirVoto(andresFernandez, mengano);
+        p.emitirVoto(andreaGonzalez, menganito);
+        p.emitirVoto(estebanRodriguez, mengano);
+        p.emitirVoto(juliaPerez, fulano);
         Assert.assertEquals("Partido A", p.calcularPartidoMasVotadoEnProvincia(buenosAires));
         Assert.assertEquals("Partido B", p.calcularPartidoMasVotadoEnProvincia(cordoba));
         Assert.assertEquals("Partido B", p.calcularPartidoMasVotadoEnProvincia(santaFe));
