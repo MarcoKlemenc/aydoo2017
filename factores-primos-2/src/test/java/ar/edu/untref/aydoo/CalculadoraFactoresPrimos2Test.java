@@ -15,7 +15,7 @@ import org.junit.Assert;
 public class CalculadoraFactoresPrimos2Test {
 
     @Test
-    public void testUnoEnPretty() {
+    public void presentaCorrectamenteLosFactoresPrimosDel1EnFormatoPretty() {
         ArrayList<Integer> factores = CalculadoraFactoresPrimos2.calcularFactoresPrimos(1);
         String texto = CalculadoraFactoresPrimos2.formatearPretty(factores, "1");
         String esperado = "Factores primos 1: ";
@@ -23,7 +23,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testUnoEnQuiet() {
+    public void presentaCorrectamenteLosFactoresPrimosDel1EnFormatoQuiet() {
         ArrayList<Integer> factores = CalculadoraFactoresPrimos2.calcularFactoresPrimos(1);
         String texto = CalculadoraFactoresPrimos2.formatearQuiet(factores);
         String esperado = "";
@@ -31,7 +31,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testDosEnPretty() {
+    public void presentaCorrectamenteLosFactoresPrimosDel2EnFormatoPretty() {
         ArrayList<Integer> factores = CalculadoraFactoresPrimos2.calcularFactoresPrimos(2);
         String texto = CalculadoraFactoresPrimos2.formatearPretty(factores, "2");
         String esperado = "Factores primos 2: 2 ";
@@ -39,7 +39,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testDosEnQuiet() {
+    public void presentaCorrectamenteLosFactoresPrimosDel2EnFormatoQuiet() {
         ArrayList<Integer> factores = CalculadoraFactoresPrimos2.calcularFactoresPrimos(2);
         String texto = CalculadoraFactoresPrimos2.formatearQuiet(factores);
         String esperado = "2\n";
@@ -47,7 +47,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testCuarentaEnPretty() {
+    public void presentaCorrectamenteLosFactoresPrimosDel40EnFormatoPretty() {
         ArrayList<Integer> factores = CalculadoraFactoresPrimos2.calcularFactoresPrimos(40);
         String texto = CalculadoraFactoresPrimos2.formatearPretty(factores, "40");
         String esperado = "Factores primos 40: 2 2 2 5 ";
@@ -55,7 +55,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testCuarentaEnQuiet() {
+    public void presentaCorrectamenteLosFactoresPrimosDel40EnFormatoQuiet() {
         ArrayList<Integer> factores = CalculadoraFactoresPrimos2.calcularFactoresPrimos(40);
         String texto = CalculadoraFactoresPrimos2.formatearQuiet(factores);
         String esperado = "5\n2\n2\n2\n";
@@ -63,7 +63,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testEspecificandoOtroArgumento() {
+    public void presentaLosFactoresPrimosEnFormatoPrettyAlEspecificarOtroArgumento() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         String esperado = "Factores primos 2: 2 \n";
@@ -76,7 +76,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testEspecificandoFormatoIncorrecto() {
+    public void muestraUnErrorAlEspecificarUnFormatoIncorrecto() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         String esperado = "Formato no aceptado. Las opciones posibles son: pretty o quiet.\n";
@@ -89,20 +89,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testUnoSinEspecificarFormato() {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(baos));
-        String esperado = "Factores primos 1: \n";
-        String[] argumentos = { "1" };
-
-        CalculadoraFactoresPrimos2.main(argumentos);
-        String salida = new String(baos.toByteArray());
-
-        Assert.assertEquals(esperado, salida);
-    }
-
-    @Test
-    public void testUnoEspecificandoFormatoPretty() {
+    public void presentaCorrectamenteLosFactoresPrimosDel1EnFormatoPrettyAlIngresarlosPorConsola() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         String esperado = "Factores primos 1: \n";
@@ -115,7 +102,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testUnoEspecificandoFormatoPrettyIncluyendoMayusculas() {
+    public void presentaCorrectamenteLosFactoresPrimosDel1EnFormatoPrettyAlIngresarlosPorConsolaConMayusculas() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         String esperado = "Factores primos 1: \n";
@@ -128,7 +115,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testUnoEspecificandoFormatoQuiet() {
+    public void presentaCorrectamenteLosFactoresPrimosDel1EnFormatoQuietAlIngresarlosPorConsola() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         String esperado = "\n";
@@ -141,7 +128,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testUnoEspecificandoFormatoQuietIncluyendoMayusculas() {
+    public void presentaCorrectamenteLosFactoresPrimosDel1EnFormatoQuietAlIngresarlosPorConsolaConMayusculas() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         String esperado = "\n";
@@ -154,7 +141,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testDosSinEspecificarFormato() {
+    public void presentaLosFactoresPrimosEnFormatoPrettyAlNoEspecificarFormato() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         String esperado = "Factores primos 2: 2 \n";
@@ -167,7 +154,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testDosEspecificandoFormatoPretty() {
+    public void presentaCorrectamenteLosFactoresPrimosDel2EnFormatoPrettyAlIngresarlosPorConsola() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         String esperado = "Factores primos 2: 2 \n";
@@ -180,7 +167,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testDosEspecificandoFormatoQuiet() {
+    public void presentaCorrectamenteLosFactoresPrimosDel2EnFormatoQuietAlIngresarlosPorConsola() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         String esperado = "2\n\n";
@@ -193,20 +180,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testCuarentaSinEspecificarFormato() {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(baos));
-        String esperado = "Factores primos 40: 2 2 2 5 \n";
-        String[] argumentos = { "40" };
-
-        CalculadoraFactoresPrimos2.main(argumentos);
-        String salida = new String(baos.toByteArray());
-
-        Assert.assertEquals(esperado, salida);
-    }
-
-    @Test
-    public void testCuarentaEspecificandoFormatoPretty() {
+    public void presentaCorrectamenteLosFactoresPrimosDel40EnFormatoPrettyAlIngresarlosPorConsola() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         String esperado = "Factores primos 40: 2 2 2 5 \n";
@@ -219,7 +193,7 @@ public class CalculadoraFactoresPrimos2Test {
     }
 
     @Test
-    public void testCuarentaEspecificandoFormatoQuiet() {
+    public void presentaCorrectamenteLosFactoresPrimosDel40EnFormatoQuietAlIngresarlosPorConsola() {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         String esperado = "5\n2\n2\n2\n\n";
