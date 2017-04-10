@@ -11,6 +11,7 @@ import java.util.Collections;
 public class CalculadoraFactoresPrimos2 {
 
     public static ArrayList<Integer> calcularFactoresPrimos(int numero) {
+
         ArrayList<Integer> factoresPrimos = new ArrayList<Integer>();
         while (numero > 1) {
             for (int i = 2; i <= numero; i++) {
@@ -25,6 +26,7 @@ public class CalculadoraFactoresPrimos2 {
     }
 
     public static String formatearPretty(ArrayList<Integer> primos, String argumento) {
+
         String factores = "Factores primos " + argumento + ": ";
         for (Integer numero : primos) {
             factores += numero + " ";
@@ -33,6 +35,7 @@ public class CalculadoraFactoresPrimos2 {
     }
 
     public static String formatearQuiet(ArrayList<Integer> primos) {
+
         Collections.reverse(primos);
         String factores = "";
         for (Integer numero : primos) {
@@ -42,6 +45,7 @@ public class CalculadoraFactoresPrimos2 {
     }
 
     public static final void main(String arg[]) {
+
         ArrayList<Integer> primos = calcularFactoresPrimos(Integer.parseInt(arg[0]));
         if (arg.length > 1 && arg[1].substring(0, 9).equals("--format=")) {
             switch (arg[1].substring(9).toLowerCase()) {
