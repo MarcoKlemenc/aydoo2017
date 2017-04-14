@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+// Entity
 public class ArticuloDeLibreria extends Articulo {
 
     // Puse el IVA en una variable aparte por si en algun momento se debe modificar

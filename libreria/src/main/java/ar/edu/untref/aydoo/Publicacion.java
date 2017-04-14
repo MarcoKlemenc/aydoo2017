@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+// Entity
 public class Publicacion extends Articulo {
 
     // La periodicidad implica cada cuantos dias se lanza una edicion

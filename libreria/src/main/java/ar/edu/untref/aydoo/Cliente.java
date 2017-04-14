@@ -3,6 +3,7 @@ package ar.edu.untref.aydoo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+// Entity
 public class Cliente {
 
     private ArrayList<Articulo> articulosComprados;

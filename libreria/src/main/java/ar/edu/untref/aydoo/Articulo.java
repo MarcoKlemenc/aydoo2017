@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+// Entity
 public class Articulo {
 
     private String nombre;
