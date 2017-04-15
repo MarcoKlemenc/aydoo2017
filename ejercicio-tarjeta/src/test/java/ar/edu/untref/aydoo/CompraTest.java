@@ -4,9 +4,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by nicopaez on 4/12/17.
- */
 public class CompraTest {
 
     @Test

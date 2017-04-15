@@ -4,16 +4,15 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by nicopaez on 4/12/17.
- */
 public class ClienteTest {
 
     @Test
-    public void debeCrearseConMail(){
+    public void debeCrearseConNombreYMail(){
+        String nombre = "juan";
         String email = "juan@gmail.com";
-        Cliente juan = new Cliente("juan", email);
+        Cliente juan = new Cliente(nombre, email);
 
+        assertEquals(nombre, juan.getNombre());
         assertEquals(email, juan.getEmail());
 
     }
