@@ -24,8 +24,7 @@ public class Sucursal {
 
     public int aplicarDescuento(int valorBruto, Tarjeta tarjeta) {
 
-        DescuentoParaTarjetaPremium descuento = establecimiento.getDescuentoPremium();
-        return descuento.aplicar(valorBruto);
+        return establecimiento.getDescuentoPremium().aplicar(valorBruto);
     }
 
     public void registrarCompra(Compra compra) {

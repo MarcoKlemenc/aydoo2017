@@ -4,7 +4,8 @@ public class DescuentoParaTarjetaPremium {
 
     private int porcentajeDescuento;
 
-    public DescuentoParaTarjetaPremium(int porcentajeDescuento, Establecimiento establecimiento) {
+    public DescuentoParaTarjetaPremium(int porcentajeDescuento,
+                                       Establecimiento establecimiento) {
 
         this.porcentajeDescuento = porcentajeDescuento;
         establecimiento.setDescuentoPremium(this);

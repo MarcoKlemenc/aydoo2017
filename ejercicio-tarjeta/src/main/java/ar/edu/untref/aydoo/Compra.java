@@ -7,9 +7,10 @@ public class Compra {
     private Sucursal sucursal;
     private Tarjeta tarjeta;
 
-    public Compra(int cantidadDeCompra, Producto producto, Sucursal sucursal, Tarjeta tarjeta) {
+    public Compra(int cantidad, Producto producto, Sucursal sucursal,
+                  Tarjeta tarjeta) {
 
-        this.cantidad = cantidadDeCompra;
+        this.cantidad = cantidad;
         this.producto = producto;
         this.sucursal = sucursal;
         this.tarjeta = tarjeta;

@@ -6,7 +6,8 @@ public class Producto {
     private final Establecimiento establecimiento;
     private int precio;
 
-    public Producto(String nombre, int precioUnitario, Establecimiento establecimiento) {
+    public Producto(String nombre, int precioUnitario,
+                    Establecimiento establecimiento) {
 
         this.precio = precioUnitario;
         this.nombre = nombre;
