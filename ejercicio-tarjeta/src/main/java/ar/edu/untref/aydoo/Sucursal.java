@@ -31,4 +31,9 @@ public class Sucursal {
 
         cantidadBeneficiosOtorgados++;
     }
+
+    public Establecimiento getEstablecimiento() {
+
+        return establecimiento;
+    }
 }
