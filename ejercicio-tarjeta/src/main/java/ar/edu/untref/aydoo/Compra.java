@@ -8,7 +8,8 @@ public class Compra {
     private Tarjeta tarjeta;
 
     public Compra(int cantidadDeCompra, Producto producto, Sucursal sucursal, Tarjeta tarjeta) {
-        this.cantidad =  cantidadDeCompra;
+
+        this.cantidad = cantidadDeCompra;
         this.producto = producto;
         this.sucursal = sucursal;
         this.tarjeta = tarjeta;
@@ -16,10 +17,12 @@ public class Compra {
     }
 
     public int calcularMontoBruto() {
+
         return cantidad * producto.getPrecio();
     }
 
     public int calcularMontoNeto() {
+
         return sucursal.aplicarDescuento(calcularMontoBruto(), tarjeta);
     }
 }
