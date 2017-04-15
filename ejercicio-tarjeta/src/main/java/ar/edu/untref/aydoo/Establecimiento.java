@@ -3,19 +3,19 @@ package ar.edu.untref.aydoo;
 public class Establecimiento {
 
     private final String nombre;
-    private DescuentoParaTarjetaPremium descuentoPremium;
+    private DescuentoPremium descuentoPremium;
 
     public Establecimiento(String nombre) {
 
         this.nombre = nombre;
     }
 
-    public DescuentoParaTarjetaPremium getDescuentoPremium() {
+    public DescuentoPremium getDescuentoPremium() {
 
         return descuentoPremium;
     }
 
-    public void setDescuentoPremium(DescuentoParaTarjetaPremium descuento) {
+    public void setDescuentoPremium(DescuentoPremium descuento) {
 
         this.descuentoPremium = descuento;
     }

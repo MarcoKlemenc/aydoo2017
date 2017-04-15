@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 public class Andata_a_cagar_forro_Test {
 
     @Test
-    public void elefante() {
+    public void elefante() throws PorcentajeInvalidoException{
         // En enero, Juan compra 2 kg de helado en la sucursal Caseros de la heladeria "Frio" con la tarjeta Premium.
         // La heladeria Frio vende el helado a $100 por kg y ofrece un descuento del 10% para compras con tarjetas premium.
 
@@ -19,7 +19,7 @@ public class Andata_a_cagar_forro_Test {
         Establecimiento heladeriaFrio = new Establecimiento("Heladeria Frio");
 
         int porcentajeDescuento = 10;
-        DescuentoParaTarjetaPremium descuento10 = new DescuentoParaTarjetaPremium(porcentajeDescuento, heladeriaFrio);
+        DescuentoPremium descuento10 = new DescuentoPremium(porcentajeDescuento, heladeriaFrio);
 
         Sucursal caseros = new Sucursal("Caseros", heladeriaFrio);
         int precioUnitario = 100;
