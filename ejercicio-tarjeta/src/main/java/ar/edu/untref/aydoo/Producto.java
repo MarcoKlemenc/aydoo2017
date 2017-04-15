@@ -6,10 +6,10 @@ public class Producto {
     private final Establecimiento establecimiento;
     private int precio;
 
-    public Producto(String nombre, int precioUnitario,
+    public Producto(String nombre, int precio,
                     Establecimiento establecimiento) {
 
-        this.precio = precioUnitario;
+        this.precio = precio;
         this.nombre = nombre;
         this.establecimiento = establecimiento;
     }

@@ -8,7 +8,7 @@ public class EstablecimientoTest {
 
     @Test
     public void debeCrearseConNombre() {
-        
+
         String nombre = "Nike";
         Establecimiento nike = new Establecimiento(nombre);
 
