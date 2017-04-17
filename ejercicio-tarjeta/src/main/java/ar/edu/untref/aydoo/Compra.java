@@ -1,25 +1,35 @@
 package ar.edu.untref.aydoo;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Compra {
 
-    private final int cantidad;
-    private final Producto producto;
+    private Map<Producto, Integer> productos;
     private Sucursal sucursal;
     private Tarjeta tarjeta;
 
-    public Compra(int cantidad, Producto producto, Sucursal sucursal,
-                  Tarjeta tarjeta) {
+    public Compra(Sucursal sucursal, Tarjeta tarjeta) {
 
-        this.cantidad = cantidad;
-        this.producto = producto;
+        this.productos = new HashMap<Producto, Integer>();
         this.sucursal = sucursal;
         this.tarjeta = tarjeta;
         sucursal.registrarCompra(this);
     }
 
+    public void agregar(Producto producto, int cantidad){
+        int cantidadActual = productos.containsKey(producto) ?
+                productos.get(producto) : 0;
+        productos.put(producto, cantidadActual + cantidad);
+    }
+
     public int calcularMontoBruto() {
 
-        return cantidad * producto.getPrecio();
+        int monto = 0;
+        for (Map.Entry<Producto, Integer> e : productos.entrySet()){
+            monto += e.getKey().getPrecio() * e.getValue();
+        }
+        return monto;
     }
 
     public int calcularMontoNeto() {

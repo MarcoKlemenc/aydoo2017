@@ -14,7 +14,9 @@ public class CompraTest {
         Establecimiento heladeriaFrio = new Establecimiento("frio");
         Sucursal frioCaseros = new Sucursal("Caseros", heladeriaFrio);
         Producto helado = new Producto("helado", 10, heladeriaFrio);
-        Compra unaCompra = new Compra(2, helado, frioCaseros, null);
+
+        Compra unaCompra = new Compra(frioCaseros, visa);
+        unaCompra.agregar(helado, 2);
 
         assertEquals(20, unaCompra.calcularMontoBruto());
     }
@@ -28,8 +30,28 @@ public class CompraTest {
         Sucursal frioCaseros = new Sucursal("Caseros", heladeriaFrio);
         DescuentoPremium diezFrio = new DescuentoPremium(10, heladeriaFrio);
         Producto helado = new Producto("helado", 10, heladeriaFrio);
-        Compra unaCompra = new Compra(2, helado, frioCaseros, visa);
+
+        Compra unaCompra = new Compra(frioCaseros, visa);
+        unaCompra.agregar(helado, 2);
 
         assertEquals(18, unaCompra.calcularMontoNeto());
+    }
+
+    @Test
+    public void deberiaCalcularMontoBrutoParaMasDeUnArticulo() throws PorcentajeInvalidoException{
+
+        Cliente juan = new Cliente("juan", "juan@gmail.com");
+        Tarjeta visa = new Tarjeta(juan, true);
+        Establecimiento heladeriaFrio = new Establecimiento("frio");
+        Sucursal frioCaseros = new Sucursal("Caseros", heladeriaFrio);
+        DescuentoPremium diezFrio = new DescuentoPremium(10, heladeriaFrio);
+        Producto unKilo = new Producto("1 kg", 200, heladeriaFrio);
+        Producto medioKilo = new Producto("1/2 kg", 120, heladeriaFrio);
+
+        Compra unaCompra = new Compra(frioCaseros, visa);
+        unaCompra.agregar(unKilo, 2);
+        unaCompra.agregar(medioKilo, 1);
+
+        assertEquals(520, unaCompra.calcularMontoBruto());
     }
 }

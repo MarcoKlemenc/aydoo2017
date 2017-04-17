@@ -26,7 +26,9 @@ public class Andata_a_cagar_forro_Test {
         Producto helado = new Producto("Helado", precioUnitario, heladeriaFrio);
 
         int cantidadDeCompra = 2;
-        Compra compraDe2kgDeHelado = new Compra(cantidadDeCompra, helado, caseros, tarjeta);
+        Compra compraDe2kgDeHelado = new Compra(caseros, tarjeta);
+
+        compraDe2kgDeHelado.agregar(helado, cantidadDeCompra);
 
         assertEquals(1, caseros.getCantidadBeneficiosOtorgados());
     }
