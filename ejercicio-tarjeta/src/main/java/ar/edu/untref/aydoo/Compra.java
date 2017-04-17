@@ -14,19 +14,18 @@ public class Compra {
         this.productos = new HashMap<Producto, Integer>();
         this.sucursal = sucursal;
         this.tarjeta = tarjeta;
+        tarjeta.registrarCompra(this);
         sucursal.registrarCompra(this);
     }
 
-    public void agregar(Producto producto, int cantidad){
-        int cantidadActual = productos.containsKey(producto) ?
-                productos.get(producto) : 0;
-        productos.put(producto, cantidadActual + cantidad);
+    public void agregar(Producto producto, int cantidad) {
+        productos.put(producto, cantidad);
     }
 
     public int calcularMontoBruto() {
 
         int monto = 0;
-        for (Map.Entry<Producto, Integer> e : productos.entrySet()){
+        for (Map.Entry<Producto, Integer> e : productos.entrySet()) {
             monto += e.getKey().getPrecio() * e.getValue();
         }
         return monto;

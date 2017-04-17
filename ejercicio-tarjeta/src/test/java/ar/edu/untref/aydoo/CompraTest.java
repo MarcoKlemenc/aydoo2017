@@ -22,7 +22,7 @@ public class CompraTest {
     }
 
     @Test
-    public void deberiaCalcularMontoNeto() throws PorcentajeInvalidoException{
+    public void deberiaCalcularMontoNeto() throws PorcentajeInvalidoException {
 
         Cliente juan = new Cliente("juan", "juan@gmail.com");
         Tarjeta visa = new Tarjeta(juan, true);
@@ -38,7 +38,7 @@ public class CompraTest {
     }
 
     @Test
-    public void deberiaCalcularMontoBrutoParaMasDeUnArticulo() throws PorcentajeInvalidoException{
+    public void deberiaCalcularMontoBrutoParaMasDeUnArticulo() throws PorcentajeInvalidoException {
 
         Cliente juan = new Cliente("juan", "juan@gmail.com");
         Tarjeta visa = new Tarjeta(juan, true);
