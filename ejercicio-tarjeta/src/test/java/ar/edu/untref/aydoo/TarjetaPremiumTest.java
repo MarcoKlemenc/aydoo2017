@@ -4,20 +4,18 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class TarjetaTest {
+public class TarjetaPremiumTest {
 
     @Test
-    public void debeCrearseConClienteYSiEsPremium() {
+    public void debeCrearseConCliente() {
 
         String nombre = "juan";
         String email = "juan@gmail.com";
-        boolean esPremium = true;
         Cliente juan = new Cliente(nombre, email);
 
-        Tarjeta visa = new Tarjeta(juan, esPremium);
+        Tarjeta visa = new TarjetaPremium(juan);
 
         assertEquals(juan, visa.getCliente());
-        assertEquals(esPremium, visa.esPremium());
     }
 
     @Test
@@ -25,9 +23,8 @@ public class TarjetaTest {
 
         String nombre = "juan";
         String email = "juan@gmail.com";
-        boolean esPremium = true;
         Cliente juan = new Cliente(nombre, email);
-        Tarjeta visa = new Tarjeta(juan, esPremium);
+        Tarjeta visa = new TarjetaPremium(juan);
 
         Establecimiento heladeriaFrio = new Establecimiento("frio");
         Sucursal frioCaseros = new Sucursal("Caseros", heladeriaFrio);

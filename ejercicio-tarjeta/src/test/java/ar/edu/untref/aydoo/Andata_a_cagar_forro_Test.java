@@ -14,8 +14,7 @@ public class Andata_a_cagar_forro_Test {
         String email = "juan@gmail.com";
         Cliente juan = new Cliente("juan", email);
 
-        boolean esPremium = true;
-        Tarjeta tarjeta = new Tarjeta(juan, esPremium);
+        Tarjeta tarjeta = new TarjetaPremium(juan);
         Establecimiento heladeriaFrio = new Establecimiento("Heladeria Frio");
 
         int porcentajeDescuento = 10;
