@@ -10,6 +10,7 @@ public class Sucursal {
 
         this.establecimiento = establecimiento;
         this.nombre = nombre;
+        establecimiento.agregarSucursal(this);
     }
 
     public String getNombre() {

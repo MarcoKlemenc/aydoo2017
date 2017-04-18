@@ -1,6 +1,6 @@
 package ar.edu.untref.aydoo;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Tarjeta {
@@ -11,7 +11,7 @@ public class Tarjeta {
 
     public Tarjeta(Cliente cliente, boolean esPremium) {
 
-        this.compras = new LinkedList<Compra>();
+        this.compras = new ArrayList<Compra>();
         this.cliente = cliente;
         this.esPremium = esPremium;
     }
