@@ -7,12 +7,23 @@ public class Establecimiento {
 
     private final String nombre;
     private List<Sucursal> sucursales;
+    private DescuentoClassic descuentoClassic;
     private DescuentoPremium descuentoPremium;
 
     public Establecimiento(String nombre) {
 
         this.sucursales = new ArrayList<Sucursal>();
         this.nombre = nombre;
+    }
+
+    public DescuentoClassic getDescuentoClassic() {
+
+        return descuentoClassic;
+    }
+
+    public void setDescuentoClassic(DescuentoClassic descuento) {
+
+        this.descuentoClassic = descuento;
     }
 
     public DescuentoPremium getDescuentoPremium() {
