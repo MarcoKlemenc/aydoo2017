@@ -1,7 +1,8 @@
 package ar.edu.untref.aydoo;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class Compra {
 
@@ -11,7 +12,7 @@ public class Compra {
 
     public Compra(Sucursal sucursal, Tarjeta tarjeta) {
 
-        this.productos = new HashMap<Producto, Integer>();
+        this.productos = new TreeMap<Producto, Integer>();
         this.sucursal = sucursal;
         this.tarjeta = tarjeta;
         tarjeta.registrarCompra(this);
@@ -31,9 +32,9 @@ public class Compra {
         return monto;
     }
 
-    public int calcularMontoNeto() {
+    public int calcularMontoNeto() throws UnSoloProductoException {
 
-        return sucursal.aplicarDescuento(calcularMontoBruto(), tarjeta);
+        return sucursal.aplicarDescuento(this, tarjeta);
     }
 
     @Override
@@ -46,7 +47,16 @@ public class Compra {
         }
         productosComprados = productosComprados.substring(0, productosComprados.length() - 3);
         String montoBruto = " | " + String.valueOf(calcularMontoBruto()) + " | ";
-        String beneficio = String.valueOf(calcularMontoBruto() - calcularMontoNeto());
+        String beneficio = "";
+        try {
+            beneficio = String.valueOf(calcularMontoBruto() - calcularMontoNeto());
+        }catch (UnSoloProductoException e){
+            e.printStackTrace();
+        }
         return establecimiento + productosComprados + montoBruto + beneficio;
+    }
+
+    public Set<Producto> getProductos() {
+        return productos.keySet();
     }
 }

@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 public class IntegracionTest {
 
     @Test
-    public void EjemploUnoTest() throws PorcentajeInvalidoException {
+    public void ejemploUnoTest() throws PorcentajeInvalidoException {
         String nombreCarlos = "Carlos";
         String mailCarlos = "carlos@gmail.com";
         Cliente carlos = new Cliente(nombreCarlos, mailCarlos);
@@ -76,5 +76,40 @@ public class IntegracionTest {
         assertEquals(beneficioDos, comprasJuan.get(1));
         String beneficioTres = "Heladeria A | Helado x 3 | 600 | 120";
         assertEquals(beneficioTres, comprasJuan.get(2));
+    }
+
+    @Test
+    public void ejemploDosTest() {
+
+        String nombreMateo = "Mateo";
+        String mailMateo = "mateo@gmail.com";
+        Cliente mateo = new Cliente(nombreMateo, mailMateo);
+        Tarjeta tarjetaMateo = new TarjetaClassic(mateo);
+
+        String nombreElAltillo = "Libreria el altillo";
+        Establecimiento elAltillo = new Establecimiento(nombreElAltillo);
+        String nombreSucursal = "Sucursal";
+        Sucursal sucursal = new Sucursal(nombreSucursal, elAltillo);
+        Beneficio2x1 beneficio = new Beneficio2x1(elAltillo);
+
+        String nombreMartinFierro = "Martin Fierro";
+        int precioMartinFierro = 100;
+        Producto martinFierro = new Producto(nombreMartinFierro, precioMartinFierro, elAltillo);
+        String nombreElCantarDelCid = "El Cantar del Cid";
+        int precioElCantarDelCid = 80;
+        Producto elCantarDelCid = new Producto(nombreElCantarDelCid, precioElCantarDelCid, elAltillo);
+
+        ClubDeBeneficios club = new ClubDeBeneficios();
+        club.agregar(mateo);
+        club.agregar(tarjetaMateo);
+        club.agregar(elAltillo);
+
+        Compra compra = new Compra(sucursal, tarjetaMateo);
+        compra.agregar(martinFierro, 1);
+        compra.agregar(elCantarDelCid, 1);
+
+        List<String> comprasMateo = club.buscarBeneficiosObtenidos(mateo);
+        String beneficioUno = "Libreria el altillo | El Cantar del Cid x 1 - Martin Fierro x 1 | 180 | 80";
+        assertEquals(beneficioUno, comprasMateo.get(0));
     }
 }

@@ -23,9 +23,18 @@ public class Sucursal {
         return cantidadBeneficiosOtorgados;
     }
 
-    public int aplicarDescuento(int valorBruto, Tarjeta tarjeta) {
+    public int aplicarDescuento(Compra compra, Tarjeta tarjeta) throws UnSoloProductoException {
 
-        return establecimiento.getDescuentoPremium().aplicar(valorBruto);
+        if (establecimiento.getBeneficio2x1() != null) {
+            return establecimiento.getBeneficio2x1().aplicar(compra.getProductos());
+        }
+        if (establecimiento.getDescuentoClassic() != null && tarjeta instanceof TarjetaClassic) {
+            return establecimiento.getDescuentoClassic().aplicar(compra.calcularMontoBruto());
+        }
+        if (establecimiento.getDescuentoPremium() != null && tarjeta instanceof TarjetaPremium) {
+            return establecimiento.getDescuentoPremium().aplicar(compra.calcularMontoBruto());
+        }
+        return compra.calcularMontoBruto();
     }
 
     public void registrarCompra(Compra compra) {

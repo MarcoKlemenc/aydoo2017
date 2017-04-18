@@ -9,6 +9,7 @@ public class Establecimiento {
     private List<Sucursal> sucursales;
     private DescuentoClassic descuentoClassic;
     private DescuentoPremium descuentoPremium;
+    private Beneficio2x1 beneficio2x1;
 
     public Establecimiento(String nombre) {
 
@@ -54,9 +55,19 @@ public class Establecimiento {
     public int calcularTotalBeneficios() {
 
         int total = 0;
-        for (Sucursal s : sucursales){
+        for (Sucursal s : sucursales) {
             total += s.getCantidadBeneficiosOtorgados();
         }
         return total;
+    }
+
+    public void setBeneficio2x1(Beneficio2x1 beneficio2x1) {
+
+        this.beneficio2x1 = beneficio2x1;
+    }
+
+    public Beneficio2x1 getBeneficio2x1() {
+
+        return beneficio2x1;
     }
 }

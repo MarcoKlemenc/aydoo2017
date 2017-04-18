@@ -1,6 +1,6 @@
 package ar.edu.untref.aydoo;
 
-public class Producto {
+public class Producto implements Comparable<Producto> {
 
     private final String nombre;
     private final Establecimiento establecimiento;
@@ -27,5 +27,9 @@ public class Producto {
     public int getPrecio() {
 
         return precio;
+    }
+
+    public int compareTo(Producto otro) {
+        return this.nombre.compareTo(otro.getNombre());
     }
 }
