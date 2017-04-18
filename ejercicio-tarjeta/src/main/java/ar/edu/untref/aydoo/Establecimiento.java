@@ -50,4 +50,13 @@ public class Establecimiento {
 
         sucursales.add(sucursal);
     }
+
+    public int calcularTotalBeneficios() {
+
+        int total = 0;
+        for (Sucursal s : sucursales){
+            total += s.getCantidadBeneficiosOtorgados();
+        }
+        return total;
+    }
 }

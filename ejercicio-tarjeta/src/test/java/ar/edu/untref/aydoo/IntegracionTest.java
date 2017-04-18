@@ -59,5 +59,6 @@ public class IntegracionTest {
         Compra compraTrece = new Compra(s3, tarjetaCarlos);
 
         assertEquals(s3, club.buscarSucursalConMasBeneficios());
+        assertEquals(heladeriaA, club.buscarEstablecimientoConMasBeneficios());
     }
 }

@@ -25,8 +25,22 @@ public class ClubDeBeneficios {
         establecimientos.add(establecimiento);
     }
 
+    public Establecimiento buscarEstablecimientoConMasBeneficios() {
+
+        int maximo = 0;
+        Establecimiento establecimiento = null;
+        for (Establecimiento e : establecimientos) {
+            int cantidad = e.calcularTotalBeneficios();
+            if (cantidad > maximo) {
+                maximo = cantidad;
+                establecimiento = e;
+            }
+        }
+        return establecimiento;
+    }
+
     public Sucursal buscarSucursalConMasBeneficios() {
-        
+
         int maximo = 0;
         Sucursal sucursal = null;
         for (Establecimiento e : establecimientos) {
