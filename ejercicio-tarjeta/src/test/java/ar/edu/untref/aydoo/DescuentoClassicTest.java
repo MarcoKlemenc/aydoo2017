@@ -6,9 +6,9 @@ import static org.junit.Assert.assertEquals;
 
 public class DescuentoClassicTest {
 
-    @Test (expected = PorcentajeInvalidoException.class)
+    @Test(expected = PorcentajeInvalidoException.class)
     public void debeLanzarExcepcionConPorcentajeInferiorA5()
-            throws PorcentajeInvalidoException{
+            throws PorcentajeInvalidoException {
 
         int porcentaje = 4;
         DescuentoClassic descuento = new DescuentoClassic(porcentaje, null);
@@ -16,7 +16,7 @@ public class DescuentoClassicTest {
 
     @Test
     public void debeCrearseConExitoConPorcentajeNoInferiorA5()
-            throws PorcentajeInvalidoException{
+            throws PorcentajeInvalidoException {
 
         String nombre = "Nike";
         Establecimiento nike = new Establecimiento(nombre);

@@ -8,7 +8,7 @@ abstract class Tarjeta {
     private final Cliente cliente;
     private List<Compra> compras;
 
-    public Tarjeta(Cliente cliente) {
+    Tarjeta(Cliente cliente) {
 
         this.compras = new ArrayList<Compra>();
         this.cliente = cliente;

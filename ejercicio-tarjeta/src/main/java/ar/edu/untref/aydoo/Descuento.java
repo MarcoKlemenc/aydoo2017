@@ -2,9 +2,9 @@ package ar.edu.untref.aydoo;
 
 abstract class Descuento {
 
-    protected int porcentaje;
+    private int porcentaje;
 
-    public Descuento(int porcentaje) throws PorcentajeInvalidoException {
+    Descuento(int porcentaje) throws PorcentajeInvalidoException {
 
         if (porcentaje >= 5) {
             this.porcentaje = porcentaje;
