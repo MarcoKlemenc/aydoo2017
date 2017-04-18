@@ -54,4 +54,13 @@ public class ClubDeBeneficios {
         }
         return sucursal;
     }
+
+    public List<String> buscarBeneficiosObtenidos(Cliente cliente) {
+
+        List<String> beneficiosObtenidos = new ArrayList<String>();
+        for (Compra c : cliente.getTarjeta().getCompras()) {
+            beneficiosObtenidos.add(c.toString());
+        }
+        return beneficiosObtenidos;
+    }
 }

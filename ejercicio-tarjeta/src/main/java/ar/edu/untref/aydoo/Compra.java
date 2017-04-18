@@ -35,4 +35,18 @@ public class Compra {
 
         return sucursal.aplicarDescuento(calcularMontoBruto(), tarjeta);
     }
+
+    @Override
+    public String toString() {
+
+        String establecimiento = sucursal.getEstablecimiento().getNombre() + " | ";
+        String productosComprados = "";
+        for (Map.Entry<Producto, Integer> e : productos.entrySet()) {
+            productosComprados += e.getKey().getNombre() + " x " + e.getValue() + " - ";
+        }
+        productosComprados = productosComprados.substring(0, productosComprados.length() - 3);
+        String montoBruto = " | " + String.valueOf(calcularMontoBruto()) + " | ";
+        String beneficio = String.valueOf(calcularMontoBruto() - calcularMontoNeto());
+        return establecimiento + productosComprados + montoBruto + beneficio;
+    }
 }
