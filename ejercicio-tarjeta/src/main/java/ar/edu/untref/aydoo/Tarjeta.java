@@ -12,6 +12,7 @@ abstract class Tarjeta {
 
         this.compras = new ArrayList<Compra>();
         this.cliente = cliente;
+        cliente.setTarjeta(this);
     }
 
     public List<Compra> getCompras() {

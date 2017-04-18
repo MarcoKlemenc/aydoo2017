@@ -4,6 +4,7 @@ public class Cliente {
 
     private final String nombre;
     private String email;
+    private Tarjeta tarjeta;
 
     public Cliente(String nombre, String email) {
 
@@ -19,6 +20,16 @@ public class Cliente {
     public String getNombre() {
 
         return nombre;
+    }
+
+    public Tarjeta getTarjeta() {
+
+        return tarjeta;
+    }
+
+    public void setTarjeta(Tarjeta tarjeta) {
+
+        this.tarjeta = tarjeta;
     }
 
 }

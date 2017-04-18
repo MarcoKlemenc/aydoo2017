@@ -16,4 +16,16 @@ public class ClienteTest {
         assertEquals(nombre, juan.getNombre());
         assertEquals(email, juan.getEmail());
     }
+
+    @Test
+    public void debeAsignarseUnaTarjeta() {
+
+        String nombre = "juan";
+        String email = "juan@gmail.com";
+        Cliente juan = new Cliente(nombre, email);
+
+        Tarjeta visa = new TarjetaClassic(juan);
+
+        assertEquals(visa, juan.getTarjeta());
+    }
 }
