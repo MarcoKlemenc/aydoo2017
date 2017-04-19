@@ -2,6 +2,9 @@ package ar.edu.untref.aydoo;
 
 import org.junit.Test;
 
+import java.util.SortedMap;
+import java.util.TreeMap;
+
 import static org.junit.Assert.assertEquals;
 
 public class CompraTest {
@@ -15,14 +18,16 @@ public class CompraTest {
         Sucursal frioCaseros = new Sucursal("Caseros", heladeriaFrio);
         Producto helado = new Producto("helado", 10, heladeriaFrio);
 
-        Compra unaCompra = new Compra(frioCaseros, visa);
-        unaCompra.agregar(helado, 2);
+        SortedMap<Producto, Integer> productos = new TreeMap<Producto, Integer>();
+        int cantidad = 2;
+        productos.put(helado, cantidad);
+        Compra unaCompra = new Compra(frioCaseros, visa, productos);
 
         assertEquals(20, unaCompra.calcularMontoBruto());
     }
 
     @Test
-    public void deberiaCalcularMontoNeto() throws PorcentajeInvalidoException, UnSoloProductoException {
+    public void deberiaCalcularMontoNeto() throws PorcentajeInvalidoException {
 
         Cliente juan = new Cliente("juan", "juan@gmail.com");
         Tarjeta visa = new TarjetaPremium(juan);
@@ -31,8 +36,10 @@ public class CompraTest {
         DescuentoPremium diezFrio = new DescuentoPremium(10, heladeriaFrio);
         Producto helado = new Producto("helado", 10, heladeriaFrio);
 
-        Compra unaCompra = new Compra(frioCaseros, visa);
-        unaCompra.agregar(helado, 2);
+        SortedMap<Producto, Integer> productos = new TreeMap<Producto, Integer>();
+        int cantidad = 2;
+        productos.put(helado, cantidad);
+        Compra unaCompra = new Compra(frioCaseros, visa, productos);
 
         assertEquals(18, unaCompra.calcularMontoNeto());
     }
@@ -48,9 +55,12 @@ public class CompraTest {
         Producto unKilo = new Producto("1 kg", 200, heladeriaFrio);
         Producto medioKilo = new Producto("1/2 kg", 120, heladeriaFrio);
 
-        Compra unaCompra = new Compra(frioCaseros, visa);
-        unaCompra.agregar(unKilo, 2);
-        unaCompra.agregar(medioKilo, 1);
+        SortedMap<Producto, Integer> productos = new TreeMap<Producto, Integer>();
+        int cantidadKilo = 2;
+        int cantidadMedioKilo = 1;
+        productos.put(unKilo, cantidadKilo);
+        productos.put(medioKilo, cantidadMedioKilo);
+        Compra unaCompra = new Compra(frioCaseros, visa, productos);
 
         assertEquals(520, unaCompra.calcularMontoBruto());
     }

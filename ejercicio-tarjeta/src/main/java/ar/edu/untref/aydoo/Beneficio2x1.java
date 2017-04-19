@@ -2,11 +2,12 @@ package ar.edu.untref.aydoo;
 
 import java.util.Set;
 
-public class Beneficio2x1 {
+public class Beneficio2x1 implements Beneficio {
 
     public Beneficio2x1(Establecimiento establecimiento) {
 
-        establecimiento.setBeneficio2x1(this);
+        establecimiento.setBeneficioClassic(this);
+        establecimiento.setBeneficioPremium(this);
     }
 
     private int buscarMasBarato(Set<Producto> productos) {
@@ -21,17 +22,14 @@ public class Beneficio2x1 {
         return masBarato;
     }
 
-    public int aplicar(Set<Producto> productos) throws UnSoloProductoException {
+    public int aplicar(Compra compra) {
 
-        if (productos.size() >= 2) {
-            int montoARestar = buscarMasBarato(productos);
-            int total = 0;
-            for (Producto p : productos) {
-                total += p.getPrecio();
-            }
-            return total - montoARestar;
-        } else {
-            throw new UnSoloProductoException();
+        Set<Producto> productos = compra.getProductos();
+        int total = 0;
+        for (Producto p : productos) {
+            total += p.getPrecio();
         }
+        total -= (productos.size() >= 2 ? buscarMasBarato(productos) : 0);
+        return total;
     }
 }

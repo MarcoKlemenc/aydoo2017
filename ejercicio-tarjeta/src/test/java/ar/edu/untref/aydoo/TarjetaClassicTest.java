@@ -2,6 +2,8 @@ package ar.edu.untref.aydoo;
 
 import org.junit.Test;
 
+import java.util.TreeMap;
+
 import static org.junit.Assert.assertEquals;
 
 public class TarjetaClassicTest {
@@ -30,8 +32,10 @@ public class TarjetaClassicTest {
         Sucursal frioCaseros = new Sucursal("Caseros", heladeriaFrio);
         Producto helado = new Producto("helado", 10, heladeriaFrio);
 
-        Compra unaCompra = new Compra(frioCaseros, visa);
-        unaCompra.agregar(helado, 2);
+        TreeMap<Producto, Integer> productos = new TreeMap<Producto, Integer>();
+        int cantidadDeCompra = 2;
+        productos.put(helado, cantidadDeCompra);
+        Compra unaCompra = new Compra(frioCaseros, visa, productos);
 
         assertEquals(1, visa.getCompras().size());
     }

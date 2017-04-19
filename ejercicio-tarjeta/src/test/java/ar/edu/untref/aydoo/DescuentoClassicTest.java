@@ -25,6 +25,6 @@ public class DescuentoClassicTest {
         DescuentoClassic descuento = new DescuentoClassic(porcentaje, nike);
 
         assertEquals(porcentaje, descuento.getPorcentaje());
-        assertEquals(descuento, nike.getDescuentoClassic());
+        assertEquals(descuento, nike.getBeneficioClassic());
     }
 }

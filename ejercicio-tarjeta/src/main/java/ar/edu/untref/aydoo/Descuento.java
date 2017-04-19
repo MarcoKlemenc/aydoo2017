@@ -1,6 +1,6 @@
 package ar.edu.untref.aydoo;
 
-abstract class Descuento {
+abstract class Descuento implements Beneficio {
 
     private int porcentaje;
 
@@ -18,8 +18,9 @@ abstract class Descuento {
         return porcentaje;
     }
 
-    public int aplicar(int valorBruto) {
+    public int aplicar(Compra compra) {
 
+        int valorBruto = compra.calcularMontoBruto();
         return (int) valorBruto - valorBruto * porcentaje / 100;
     }
 }

@@ -7,9 +7,8 @@ public class Establecimiento {
 
     private final String nombre;
     private List<Sucursal> sucursales;
-    private DescuentoClassic descuentoClassic;
-    private DescuentoPremium descuentoPremium;
-    private Beneficio2x1 beneficio2x1;
+    private Beneficio beneficioClassic;
+    private Beneficio beneficioPremium;
 
     public Establecimiento(String nombre) {
 
@@ -17,24 +16,24 @@ public class Establecimiento {
         this.nombre = nombre;
     }
 
-    public DescuentoClassic getDescuentoClassic() {
+    public Beneficio getBeneficioClassic() {
 
-        return descuentoClassic;
+        return beneficioClassic;
     }
 
-    public void setDescuentoClassic(DescuentoClassic descuento) {
+    public void setBeneficioClassic(Beneficio beneficio) {
 
-        this.descuentoClassic = descuento;
+        this.beneficioClassic = beneficio;
     }
 
-    public DescuentoPremium getDescuentoPremium() {
+    public Beneficio getBeneficioPremium() {
 
-        return descuentoPremium;
+        return beneficioPremium;
     }
 
-    public void setDescuentoPremium(DescuentoPremium descuento) {
+    public void setBeneficioPremium(Beneficio beneficio) {
 
-        this.descuentoPremium = descuento;
+        this.beneficioPremium = beneficio;
     }
 
     public String getNombre() {
@@ -59,15 +58,5 @@ public class Establecimiento {
             total += s.getCantidadBeneficiosOtorgados();
         }
         return total;
-    }
-
-    public void setBeneficio2x1(Beneficio2x1 beneficio2x1) {
-
-        this.beneficio2x1 = beneficio2x1;
-    }
-
-    public Beneficio2x1 getBeneficio2x1() {
-
-        return beneficio2x1;
     }
 }

@@ -1,7 +1,9 @@
 package ar.edu.untref.aydoo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ClubDeBeneficios {
 
@@ -55,12 +57,18 @@ public class ClubDeBeneficios {
         return sucursal;
     }
 
-    public List<String> buscarBeneficiosObtenidos(Cliente cliente) {
+    public Map<Cliente, List<String>> buscarBeneficiosObtenidos() {
 
-        List<String> beneficiosObtenidos = new ArrayList<String>();
-        for (Compra c : cliente.getTarjeta().getCompras()) {
-            beneficiosObtenidos.add(c.toString());
+        Map<Cliente, List<String>> beneficiosPorCliente = new HashMap<Cliente, List<String>>();
+        for (Cliente c : clientes) {
+            List<String> beneficiosDeCliente = new ArrayList<String>();
+            for (Compra o : c.getTarjeta().getCompras()) {
+                beneficiosDeCliente.add(o.toString());
+            }
+            if (!beneficiosDeCliente.isEmpty()) {
+                beneficiosPorCliente.put(c, beneficiosDeCliente);
+            }
         }
-        return beneficiosObtenidos;
+        return beneficiosPorCliente;
     }
 }

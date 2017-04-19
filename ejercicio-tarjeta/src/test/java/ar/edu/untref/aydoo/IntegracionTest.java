@@ -3,6 +3,8 @@ package ar.edu.untref.aydoo;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -49,33 +51,53 @@ public class IntegracionTest {
         club.agregar(heladeriaA);
         club.agregar(restaurantB);
 
-        Compra compraUno = new Compra(s1, tarjetaCarlos);
-        Compra compraDos = new Compra(s2, tarjetaJuan);
-        compraDos.agregar(helado, 1);
-        Compra compraTres = new Compra(s1, tarjetaCarlos);
-        Compra compraCuatro = new Compra(s2, tarjetaJuan);
-        compraCuatro.agregar(helado, 2);
-        Compra compraCinco = new Compra(s1, tarjetaCarlos);
-        Compra compraSeis = new Compra(s2, tarjetaJuan);
-        compraSeis.agregar(helado, 3);
-        Compra compraSiete = new Compra(s1, tarjetaCarlos);
-        Compra compraOcho = new Compra(s3, tarjetaCarlos);
-        Compra compraNueve = new Compra(s3, tarjetaCarlos);
-        Compra compraDiez = new Compra(s3, tarjetaCarlos);
-        Compra compraOnce = new Compra(s3, tarjetaCarlos);
-        Compra compraDoce = new Compra(s3, tarjetaCarlos);
-        Compra compraTrece = new Compra(s3, tarjetaCarlos);
+        TreeMap<Producto, Integer> compraVacia = new TreeMap<Producto, Integer>();
+
+        Compra compraUno = new Compra(s1, tarjetaCarlos, compraVacia);
+
+        TreeMap<Producto, Integer> productosCompraDos = new TreeMap<Producto, Integer>();
+        int cantidadCompraDos = 1;
+        productosCompraDos.put(helado, cantidadCompraDos);
+        Compra compraDos = new Compra(s2, tarjetaJuan, productosCompraDos);
+
+        Compra compraTres = new Compra(s1, tarjetaCarlos, compraVacia);
+
+        TreeMap<Producto, Integer> productosCompraCuatro = new TreeMap<Producto, Integer>();
+        int cantidadCompraCuatro = 2;
+        productosCompraCuatro.put(helado, cantidadCompraCuatro);
+        Compra compraCuatro = new Compra(s2, tarjetaJuan, productosCompraCuatro);
+
+        Compra compraCinco = new Compra(s1, tarjetaCarlos, compraVacia);
+
+        TreeMap<Producto, Integer> productosCompraSeis = new TreeMap<Producto, Integer>();
+        int cantidadCompraSeis = 3;
+        productosCompraSeis.put(helado, cantidadCompraSeis);
+        Compra compraSeis = new Compra(s2, tarjetaJuan, productosCompraSeis);
+
+        Compra compraSiete = new Compra(s1, tarjetaCarlos, compraVacia);
+
+        Compra compraOcho = new Compra(s3, tarjetaCarlos, compraVacia);
+
+        Compra compraNueve = new Compra(s3, tarjetaCarlos, compraVacia);
+
+        Compra compraDiez = new Compra(s3, tarjetaCarlos, compraVacia);
+
+        Compra compraOnce = new Compra(s3, tarjetaCarlos, compraVacia);
+
+        Compra compraDoce = new Compra(s3, tarjetaCarlos, compraVacia);
+
+        Compra compraTrece = new Compra(s3, tarjetaCarlos, compraVacia);
 
         assertEquals(s3, club.buscarSucursalConMasBeneficios());
         assertEquals(heladeriaA, club.buscarEstablecimientoConMasBeneficios());
 
-        List<String> comprasJuan = club.buscarBeneficiosObtenidos(juan);
+        Map<Cliente, List<String>> beneficios = club.buscarBeneficiosObtenidos();
         String beneficioUno = "Heladeria A | Helado x 1 | 200 | 40";
-        assertEquals(beneficioUno, comprasJuan.get(0));
+        assertEquals(beneficioUno, beneficios.get(juan).get(0));
         String beneficioDos = "Heladeria A | Helado x 2 | 400 | 80";
-        assertEquals(beneficioDos, comprasJuan.get(1));
+        assertEquals(beneficioDos, beneficios.get(juan).get(1));
         String beneficioTres = "Heladeria A | Helado x 3 | 600 | 120";
-        assertEquals(beneficioTres, comprasJuan.get(2));
+        assertEquals(beneficioTres, beneficios.get(juan).get(2));
     }
 
     @Test
@@ -104,12 +126,15 @@ public class IntegracionTest {
         club.agregar(tarjetaMateo);
         club.agregar(elAltillo);
 
-        Compra compra = new Compra(sucursal, tarjetaMateo);
-        compra.agregar(martinFierro, 1);
-        compra.agregar(elCantarDelCid, 1);
+        TreeMap<Producto, Integer> productosCompra = new TreeMap<Producto, Integer>();
+        int cantidadMartinFierro = 1;
+        int cantidadElCantarDelCid = 1;
+        productosCompra.put(martinFierro, cantidadMartinFierro);
+        productosCompra.put(elCantarDelCid, cantidadElCantarDelCid);
+        Compra compra = new Compra(sucursal, tarjetaMateo, productosCompra);
 
-        List<String> comprasMateo = club.buscarBeneficiosObtenidos(mateo);
+        Map<Cliente, List<String>> beneficios = club.buscarBeneficiosObtenidos();
         String beneficioUno = "Libreria el altillo | El Cantar del Cid x 1 - Martin Fierro x 1 | 180 | 80";
-        assertEquals(beneficioUno, comprasMateo.get(0));
+        assertEquals(beneficioUno, beneficios.get(mateo).get(0));
     }
 }

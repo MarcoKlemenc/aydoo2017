@@ -6,6 +6,6 @@ public class DescuentoPremium extends Descuento {
             throws PorcentajeInvalidoException {
 
         super(porcentaje);
-        establecimiento.setDescuentoPremium(this);
+        establecimiento.setBeneficioPremium(this);
     }
 }

@@ -1,6 +1,10 @@
 package ar.edu.untref.aydoo;
 
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,5 +21,21 @@ public class SucursalTest {
 
         assertEquals(nombreSucursal, caseros.getNombre());
         assertEquals(nike, caseros.getEstablecimiento());
+    }
+
+    @Test
+    public void debeCobrarPrecioBrutoSiNoHayBeneficios(){
+        Cliente juan = new Cliente("juan", "juan@gmail.com");
+        Tarjeta visa = new TarjetaPremium(juan);
+        Establecimiento heladeriaFrio = new Establecimiento("frio");
+        Sucursal frioCaseros = new Sucursal("Caseros", heladeriaFrio);
+        Producto helado = new Producto("helado", 10, heladeriaFrio);
+
+        SortedMap<Producto, Integer> productos = new TreeMap<Producto, Integer>();
+        int cantidad = 2;
+        productos.put(helado, cantidad);
+        Compra unaCompra = new Compra(frioCaseros, visa, productos);
+
+        Assert.assertEquals(unaCompra.calcularMontoBruto(), unaCompra.calcularMontoNeto());
     }
 }
