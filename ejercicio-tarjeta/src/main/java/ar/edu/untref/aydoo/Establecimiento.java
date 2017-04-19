@@ -10,10 +10,10 @@ public class Establecimiento {
     private Beneficio beneficioClassic;
     private Beneficio beneficioPremium;
 
-    public Establecimiento(String nombre) {
+    public Establecimiento(final String nombreNuevo) {
 
         this.sucursales = new ArrayList<Sucursal>();
-        this.nombre = nombre;
+        this.nombre = nombreNuevo;
     }
 
     public Beneficio getBeneficioClassic() {
@@ -21,7 +21,7 @@ public class Establecimiento {
         return beneficioClassic;
     }
 
-    public void setBeneficioClassic(Beneficio beneficio) {
+    public void setBeneficioClassic(final Beneficio beneficio) {
 
         this.beneficioClassic = beneficio;
     }
@@ -31,7 +31,7 @@ public class Establecimiento {
         return beneficioPremium;
     }
 
-    public void setBeneficioPremium(Beneficio beneficio) {
+    public void setBeneficioPremium(final Beneficio beneficio) {
 
         this.beneficioPremium = beneficio;
     }
@@ -46,7 +46,7 @@ public class Establecimiento {
         return sucursales;
     }
 
-    public void agregarSucursal(Sucursal sucursal) {
+    public void agregarSucursal(final Sucursal sucursal) {
 
         sucursales.add(sucursal);
     }

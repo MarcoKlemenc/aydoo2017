@@ -2,7 +2,7 @@ package ar.edu.untref.aydoo;
 
 public class TarjetaClassic extends Tarjeta {
 
-    public TarjetaClassic(Cliente cliente) {
+    public TarjetaClassic(final Cliente cliente) {
 
         super(cliente);
     }

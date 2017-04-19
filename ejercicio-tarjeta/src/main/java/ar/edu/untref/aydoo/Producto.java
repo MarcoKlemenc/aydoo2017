@@ -6,12 +6,12 @@ public class Producto implements Comparable<Producto> {
     private final Establecimiento establecimiento;
     private int precio;
 
-    public Producto(String nombre, int precio,
-                    Establecimiento establecimiento) {
+    public Producto(final String nombreNuevo, final int precioNuevo,
+                    final Establecimiento establecimientoNuevo) {
 
-        this.precio = precio;
-        this.nombre = nombre;
-        this.establecimiento = establecimiento;
+        this.precio = precioNuevo;
+        this.nombre = nombreNuevo;
+        this.establecimiento = establecimientoNuevo;
     }
 
     public String getNombre() {
@@ -29,7 +29,8 @@ public class Producto implements Comparable<Producto> {
         return precio;
     }
 
-    public int compareTo(Producto otro) {
+    public int compareTo(final Producto otro) {
+
         return this.nombre.compareTo(otro.getNombre());
     }
 }

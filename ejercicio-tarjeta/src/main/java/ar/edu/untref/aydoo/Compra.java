@@ -5,17 +5,20 @@ import java.util.SortedMap;
 
 public class Compra {
 
+    private static final int CARACTERES_A_REMOVER = 3;
+
     private SortedMap<Producto, Integer> productos;
     private Sucursal sucursal;
     private Tarjeta tarjeta;
 
-    public Compra(Sucursal sucursal, Tarjeta tarjeta, SortedMap<Producto, Integer> productos) {
+    public Compra(final Sucursal sucursalNueva, final Tarjeta tarjetaNueva,
+                  final SortedMap<Producto, Integer> productosNuevos) {
 
-        this.productos = productos;
-        this.sucursal = sucursal;
-        this.tarjeta = tarjeta;
-        tarjeta.registrarCompra(this);
-        sucursal.registrarCompra();
+        productos = productosNuevos;
+        sucursal = sucursalNueva;
+        tarjeta = tarjetaNueva;
+        tarjetaNueva.registrarCompra(this);
+        sucursalNueva.registrarCompra();
     }
 
     public int calcularMontoBruto() {
@@ -35,20 +38,25 @@ public class Compra {
     @Override
     public String toString() {
 
-        String establecimiento = sucursal.getEstablecimiento().getNombre() + " | ";
+        String establecimiento = sucursal.getEstablecimiento().getNombre()
+                + " | ";
         String productosComprados;
-        if (productos.isEmpty()){
+        if (productos.isEmpty()) {
             productosComprados = " - ";
         } else {
             productosComprados = "";
             for (SortedMap.Entry<Producto, Integer> e : productos.entrySet()) {
-                productosComprados += e.getKey().getNombre() + " x " + e.getValue() + " - ";
+                productosComprados += e.getKey().getNombre() + " x "
+                        + e.getValue() + " - ";
             }
-            productosComprados = productosComprados.substring(0, productosComprados.length() - 3);
+            productosComprados = productosComprados.substring(0,
+                    productosComprados.length() - CARACTERES_A_REMOVER);
         }
 
-        String montoBruto = " | " + String.valueOf(calcularMontoBruto()) + " | ";
-        String beneficio = String.valueOf(calcularMontoBruto() - calcularMontoNeto());
+        String montoBruto = " | " + String.valueOf(calcularMontoBruto())
+                + " | ";
+        String beneficio = String.valueOf(calcularMontoBruto()
+                - calcularMontoNeto());
         return establecimiento + productosComprados + montoBruto + beneficio;
     }
 

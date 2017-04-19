@@ -2,7 +2,8 @@ package ar.edu.untref.aydoo;
 
 public class DescuentoPremium extends Descuento {
 
-    public DescuentoPremium(int porcentaje, Establecimiento establecimiento)
+    public DescuentoPremium(final int porcentaje,
+                            final Establecimiento establecimiento)
             throws PorcentajeInvalidoException {
 
         super(porcentaje);

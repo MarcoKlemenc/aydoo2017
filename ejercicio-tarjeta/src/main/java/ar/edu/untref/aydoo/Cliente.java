@@ -2,14 +2,14 @@ package ar.edu.untref.aydoo;
 
 public class Cliente {
 
-    private final String nombre;
+    private String nombre;
     private String email;
     private Tarjeta tarjeta;
 
-    public Cliente(String nombre, String email) {
+    public Cliente(final String nombreNuevo, final String emailNuevo) {
 
-        this.email = email;
-        this.nombre = nombre;
+        email = emailNuevo;
+        nombre = nombreNuevo;
     }
 
     public String getEmail() {
@@ -27,9 +27,9 @@ public class Cliente {
         return tarjeta;
     }
 
-    public void setTarjeta(Tarjeta tarjeta) {
+    public void setTarjeta(final Tarjeta tarjetaNueva) {
 
-        this.tarjeta = tarjeta;
+        tarjeta = tarjetaNueva;
     }
 
 }

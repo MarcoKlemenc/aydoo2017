@@ -6,11 +6,12 @@ public class Sucursal {
     private int cantidadBeneficiosOtorgados;
     private Establecimiento establecimiento;
 
-    public Sucursal(String nombre, Establecimiento establecimiento) {
+    public Sucursal(final String nombreNuevo,
+                    final Establecimiento establecimientoNuevo) {
 
-        this.establecimiento = establecimiento;
-        this.nombre = nombre;
-        establecimiento.agregarSucursal(this);
+        this.establecimiento = establecimientoNuevo;
+        this.nombre = nombreNuevo;
+        establecimientoNuevo.agregarSucursal(this);
     }
 
     public String getNombre() {
@@ -23,12 +24,14 @@ public class Sucursal {
         return cantidadBeneficiosOtorgados;
     }
 
-    public int aplicarDescuento(Compra compra, Tarjeta tarjeta) {
+    public int aplicarDescuento(final Compra compra, final Tarjeta tarjeta) {
 
-        if (establecimiento.getBeneficioClassic() != null && tarjeta instanceof TarjetaClassic) {
+        if (establecimiento.getBeneficioClassic() != null
+                && tarjeta instanceof TarjetaClassic) {
             return establecimiento.getBeneficioClassic().aplicar(compra);
         }
-        if (establecimiento.getBeneficioPremium() != null && tarjeta instanceof TarjetaPremium) {
+        if (establecimiento.getBeneficioPremium() != null
+                && tarjeta instanceof TarjetaPremium) {
             return establecimiento.getBeneficioPremium().aplicar(compra);
         }
         return compra.calcularMontoBruto();

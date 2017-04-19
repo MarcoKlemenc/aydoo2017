@@ -12,17 +12,17 @@ public class ClubDeBeneficios {
     private List<Establecimiento> establecimientos
             = new ArrayList<Establecimiento>();
 
-    public void agregar(Cliente cliente) {
+    public void agregar(final Cliente cliente) {
 
         clientes.add(cliente);
     }
 
-    public void agregar(Tarjeta tarjeta) {
+    public void agregar(final Tarjeta tarjeta) {
 
         tarjetas.add(tarjeta);
     }
 
-    public void agregar(Establecimiento establecimiento) {
+    public void agregar(final Establecimiento establecimiento) {
 
         establecimientos.add(establecimiento);
     }
@@ -59,7 +59,8 @@ public class ClubDeBeneficios {
 
     public Map<Cliente, List<String>> buscarBeneficiosObtenidos() {
 
-        Map<Cliente, List<String>> beneficiosPorCliente = new HashMap<Cliente, List<String>>();
+        Map<Cliente, List<String>> beneficiosPorCliente
+                = new HashMap<Cliente, List<String>>();
         for (Cliente c : clientes) {
             List<String> beneficiosDeCliente = new ArrayList<String>();
             for (Compra o : c.getTarjeta().getCompras()) {

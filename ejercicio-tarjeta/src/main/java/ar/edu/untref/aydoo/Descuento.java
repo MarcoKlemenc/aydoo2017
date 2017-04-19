@@ -2,12 +2,15 @@ package ar.edu.untref.aydoo;
 
 abstract class Descuento implements Beneficio {
 
+    private static final int PORCENTAJE_MINIMO = 5;
+    private static final int PORCIENTO = 100;
+
     private int porcentaje;
 
-    Descuento(int porcentaje) throws PorcentajeInvalidoException {
+    Descuento(final int porcentajeNuevo) throws PorcentajeInvalidoException {
 
-        if (porcentaje >= 5) {
-            this.porcentaje = porcentaje;
+        if (porcentajeNuevo >= PORCENTAJE_MINIMO) {
+            this.porcentaje = porcentajeNuevo;
         } else {
             throw new PorcentajeInvalidoException();
         }
@@ -18,9 +21,9 @@ abstract class Descuento implements Beneficio {
         return porcentaje;
     }
 
-    public int aplicar(Compra compra) {
+    public int aplicar(final Compra compra) {
 
         int valorBruto = compra.calcularMontoBruto();
-        return (int) valorBruto - valorBruto * porcentaje / 100;
+        return (int) valorBruto - valorBruto * porcentaje / PORCIENTO;
     }
 }

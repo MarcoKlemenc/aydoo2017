@@ -8,11 +8,11 @@ abstract class Tarjeta {
     private final Cliente cliente;
     private List<Compra> compras;
 
-    Tarjeta(Cliente cliente) {
+    Tarjeta(final Cliente clienteNuevo) {
 
         this.compras = new ArrayList<Compra>();
-        this.cliente = cliente;
-        cliente.setTarjeta(this);
+        this.cliente = clienteNuevo;
+        clienteNuevo.setTarjeta(this);
     }
 
     public List<Compra> getCompras() {
@@ -25,7 +25,7 @@ abstract class Tarjeta {
         return cliente;
     }
 
-    public void registrarCompra(Compra compra) {
+    public void registrarCompra(final Compra compra) {
 
         compras.add(compra);
     }
