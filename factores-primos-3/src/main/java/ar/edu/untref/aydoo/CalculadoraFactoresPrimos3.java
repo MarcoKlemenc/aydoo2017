@@ -45,7 +45,7 @@ public class CalculadoraFactoresPrimos3 {
                 }
             }
         }
-        s.escribir(f.aplicar(primos));
+        s.escribirLinea(f.aplicar(primos));
     }
 
     private Map<String, String> leerArgumentos(String[] args) {
