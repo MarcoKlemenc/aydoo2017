@@ -6,9 +6,9 @@ import java.nio.file.StandardOpenOption;
 
 public class SalidaArchivo implements Salida {
 
-    String nombreArchivo;
+    private String nombreArchivo;
 
-    public SalidaArchivo(String archivo) {
+    public SalidaArchivo(final String archivo) {
 
         nombreArchivo = archivo;
     }
@@ -22,11 +22,12 @@ public class SalidaArchivo implements Salida {
         }
     }
 
-    public void escribirLinea(String texto) {
+    public void escribirLinea(final String texto) {
 
-        texto += "\n";
+        String valor = texto + "\n";
         try {
-            Files.write(Paths.get(nombreArchivo), texto.getBytes(), StandardOpenOption.APPEND);
+            Files.write(Paths.get(nombreArchivo), valor.getBytes(),
+                    StandardOpenOption.APPEND);
         } catch (Exception e) {
 
         }

@@ -6,16 +6,16 @@ public class FormatoPretty implements Formato {
 
     private int numero;
 
-    public FormatoPretty(int valor) {
+    public FormatoPretty(final int valor) {
 
         numero = valor;
     }
 
-    public String aplicar(List<Integer> numeros) {
+    public String aplicar(final List<Integer> numeros) {
 
         String texto = "Factores primos " + numero + ": ";
-        for (Integer numero : numeros) {
-            texto += numero + " ";
+        for (Integer n : numeros) {
+            texto += n + " ";
         }
         return texto;
     }

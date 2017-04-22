@@ -5,12 +5,12 @@ import java.util.List;
 
 public class FormatoQuiet implements Formato {
 
-    public String aplicar(List<Integer> numeros) {
+    public String aplicar(final List<Integer> numeros) {
 
         Collections.reverse(numeros);
         String texto = "";
-        for (Integer numero : numeros) {
-            texto += numero + "\n";
+        for (Integer n : numeros) {
+            texto += n + "\n";
         }
         return texto;
     }
