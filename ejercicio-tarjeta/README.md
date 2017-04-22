@@ -5,3 +5,7 @@ Decisiones tomadas:
 * No es posible obtener un beneficio 2x1 con dos productos iguales.
 * Se lanzará una excepción al intentar introducir un porcentaje menor a 5 en el descuento.
 * Se utiliza herencia en tarjetas y beneficios para facilitar la adición de otros a futuro.
+
+Limitaciones:
+
+* No contempla la validación de precio en el beneficio 2x1.
