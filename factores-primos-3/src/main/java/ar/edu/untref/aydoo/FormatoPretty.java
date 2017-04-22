@@ -6,7 +6,7 @@ public class FormatoPretty implements Formato {
 
     private int numero;
 
-    public FormatoPretty (int valor){
+    public FormatoPretty(int valor) {
 
         numero = valor;
     }
