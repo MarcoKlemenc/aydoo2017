@@ -4,6 +4,10 @@ import java.util.*;
 
 public class CalculadoraFactoresPrimos3 {
 
+    private CalculadoraFactoresPrimos3() {
+
+    }
+
     public static List<Integer> calcular(int numero) {
 
         List<Integer> factoresPrimos = new ArrayList<Integer>();
@@ -21,12 +25,13 @@ public class CalculadoraFactoresPrimos3 {
 
     public static void main(String[] args) {
 
+        CalculadoraFactoresPrimos3 c = new CalculadoraFactoresPrimos3();
         int numero = Integer.parseInt(args[0]);
-        List<Integer> primos = calcular(numero);
+        List<Integer> primos = c.calcular(numero);
         Formato f = new FormatoPretty(numero);
         Salida s = new SalidaConsola();
         if (args.length > 1) {
-            Map<String, String> mapArgs = leerArgumentos(args);
+            Map<String, String> mapArgs = c.leerArgumentos(args);
             if (mapArgs.containsKey("--format")) {
                 switch (mapArgs.get("--format")) {
                     case "pretty":
@@ -43,7 +48,7 @@ public class CalculadoraFactoresPrimos3 {
         s.escribir(f.aplicar(primos));
     }
 
-    private static Map<String, String> leerArgumentos(String[] args) {
+    private Map<String, String> leerArgumentos(String[] args) {
 
         Map<String, String> argumentos = new HashMap<String, String>();
         for (int i = 1; i < args.length; i++) {
