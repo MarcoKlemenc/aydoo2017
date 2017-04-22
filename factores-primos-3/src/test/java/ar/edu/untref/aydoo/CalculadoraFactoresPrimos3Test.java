@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 
 /*
  * Uso ByteArrayOutputStream y PrintStream para tomar las salidas por consola que hace el main.

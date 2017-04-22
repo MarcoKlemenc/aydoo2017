@@ -1,7 +1,7 @@
 package ar.edu.untref.aydoo;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.List;
 
 /*
  * Separé el formato del main y la generación de la lista para poder testearlo por separado.
@@ -10,9 +10,9 @@ import java.util.Collections;
 
 public class CalculadoraFactoresPrimos3 {
 
-    public static ArrayList<Integer> calcularFactoresPrimos(int numero) {
+    public static List<Integer> calcularFactoresPrimos(int numero) {
 
-        ArrayList<Integer> factoresPrimos = new ArrayList<Integer>();
+        List<Integer> factoresPrimos = new ArrayList<Integer>();
         while (numero > 1) {
             for (int i = 2; i <= numero; i++) {
                 if (numero % i == 0) {
@@ -27,7 +27,7 @@ public class CalculadoraFactoresPrimos3 {
 
     public static final void main(String arg[]) {
 
-        ArrayList<Integer> primos = calcularFactoresPrimos(Integer.parseInt(arg[0]));
+        List<Integer> primos = calcularFactoresPrimos(Integer.parseInt(arg[0]));
         if (arg.length > 1 && arg[1].substring(0, 9).equals("--format=")) {
             switch (arg[1].substring(9).toLowerCase()) {
                 case "pretty":
