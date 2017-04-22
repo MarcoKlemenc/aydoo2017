@@ -1,7 +1,6 @@
 package ar.edu.untref.aydoo;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -10,18 +9,15 @@ public class FormatoPrettyTest {
 
     FormatoPretty f;
 
-    @Before
-    public void setUp() {
-        f = new FormatoPretty();
-    }
-
     @Test
     public void presentaCorrectamenteLosFactoresPrimosDel1EnFormatoPretty() {
 
-        List<Integer> factores = CalculadoraFactoresPrimos3.calcular(1);
+        int valor = 1;
+        List<Integer> factores = CalculadoraFactoresPrimos3.calcular(valor);
         String esperado = "Factores primos 1: ";
+        f = new FormatoPretty(valor);
 
-        String texto = f.aplicar(factores, "1");
+        String texto = f.aplicar(factores);
 
         Assert.assertEquals(esperado, texto);
     }
@@ -29,10 +25,12 @@ public class FormatoPrettyTest {
     @Test
     public void presentaCorrectamenteLosFactoresPrimosDel2EnFormatoPretty() {
 
-        List<Integer> factores = CalculadoraFactoresPrimos3.calcular(2);
+        int valor = 2;
+        List<Integer> factores = CalculadoraFactoresPrimos3.calcular(valor);
         String esperado = "Factores primos 2: 2 ";
+        f = new FormatoPretty(valor);
 
-        String texto = f.aplicar(factores, "2");
+        String texto = f.aplicar(factores);
 
         Assert.assertEquals(esperado, texto);
     }
@@ -40,10 +38,12 @@ public class FormatoPrettyTest {
     @Test
     public void presentaCorrectamenteLosFactoresPrimosDel40EnFormatoPretty() {
 
-        List<Integer> factores = CalculadoraFactoresPrimos3.calcular(40);
+        int valor = 40;
+        List<Integer> factores = CalculadoraFactoresPrimos3.calcular(valor);
         String esperado = "Factores primos 40: 2 2 2 5 ";
+        f = new FormatoPretty(valor);
 
-        String texto = f.aplicar(factores, "40");
+        String texto = f.aplicar(factores);
 
         Assert.assertEquals(esperado, texto);
     }

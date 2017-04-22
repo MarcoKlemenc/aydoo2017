@@ -26,32 +26,32 @@ public class CalculadoraFactoresPrimos3 {
 
     public static void main(String[] args) {
 
-        List<Integer> primos = calcular(Integer.parseInt(args[0]));
+        int numero = Integer.parseInt(args[0]);
+        List<Integer> primos = calcular(numero);
         Formato f;
+        Salida s = new SalidaConsola();
         if (args.length > 1) {
             Map<String, String> mapArgs = leerArgumentos(args);
             if (mapArgs.containsKey("--format")) {
                 switch (mapArgs.get("--format")) {
                     case "pretty":
-                        f = new FormatoPretty();
-                        System.out.println(f.aplicar(primos, args[0]));
+                        f = new FormatoPretty(numero);
                         break;
                     case "quiet":
                         f = new FormatoQuiet();
-                        System.out.println(f.aplicar(primos, args[0]));
                         break;
                     default:
                         System.out.println("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
-                        break;
+                        return;
                 }
             } else {
-                f = new FormatoPretty();
-                System.out.println(f.aplicar(primos, args[0]));
+                f = new FormatoPretty(numero);
             }
+
         } else {
-            f = new FormatoPretty();
-            System.out.println(f.aplicar(primos, args[0]));
+            f = new FormatoPretty(numero);
         }
+        s.escribir(f.aplicar(primos));
     }
 
     private static Map<String, String> leerArgumentos(String[] args) {

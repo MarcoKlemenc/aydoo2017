@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface Formato {
 
-    String aplicar(List<Integer> numeros, String argumento);
+    String aplicar(List<Integer> numeros);
 }

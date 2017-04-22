@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FormatoQuiet implements Formato {
 
-    public String aplicar(List<Integer> numeros, String argumento) {
+    public String aplicar(List<Integer> numeros) {
 
         Collections.reverse(numeros);
         String texto = "";

@@ -21,7 +21,7 @@ public class FormatoQuietTest {
         List<Integer> factores = CalculadoraFactoresPrimos3.calcular(1);
         String esperado = "";
 
-        String texto = f.aplicar(factores, "1");
+        String texto = f.aplicar(factores);
 
         Assert.assertEquals(esperado, texto);
     }
@@ -32,7 +32,7 @@ public class FormatoQuietTest {
         List<Integer> factores = CalculadoraFactoresPrimos3.calcular(2);
         String esperado = "2\n";
 
-        String texto = f.aplicar(factores, "2");
+        String texto = f.aplicar(factores);
 
         Assert.assertEquals(esperado, texto);
     }
@@ -43,7 +43,7 @@ public class FormatoQuietTest {
         List<Integer> factores = CalculadoraFactoresPrimos3.calcular(40);
         String esperado = "5\n2\n2\n2\n";
 
-        String texto = f.aplicar(factores, "40");
+        String texto = f.aplicar(factores);
 
         Assert.assertEquals(esperado, texto);
     }
