@@ -1,20 +1,15 @@
 package ar.edu.untref.aydoo;
 
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 public class FormatoQuietTest {
 
-    FormatoQuiet f;
-
-    @Before
-    public void setUp() {
-        f = new FormatoQuiet();
-    }
+    FormatoQuiet f = new FormatoQuiet();
 
     @Test
     public void presentaCorrectamenteLosFactoresPrimosDel1EnFormatoQuiet() {
@@ -24,7 +19,7 @@ public class FormatoQuietTest {
 
         String texto = f.aplicar(factores);
 
-        Assert.assertEquals(esperado, texto);
+        assertEquals(esperado, texto);
     }
 
     @Test
@@ -35,7 +30,7 @@ public class FormatoQuietTest {
 
         String texto = f.aplicar(factores);
 
-        Assert.assertEquals(esperado, texto);
+        assertEquals(esperado, texto);
     }
 
     @Test
@@ -46,6 +41,6 @@ public class FormatoQuietTest {
 
         String texto = f.aplicar(factores);
 
-        Assert.assertEquals(esperado, texto);
+        assertEquals(esperado, texto);
     }
 }

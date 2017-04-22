@@ -1,15 +1,16 @@
 package ar.edu.untref.aydoo;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static org.junit.Assert.assertEquals;
+
 public class SalidaConsolaTest {
 
     @Test
-    public void debeEscribirUnTextoDeEjemploAConsola(){
+    public void debeEscribirUnTextoDeEjemploAConsola() {
 
         SalidaConsola s = new SalidaConsola();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -20,11 +21,11 @@ public class SalidaConsolaTest {
         s.escribirLinea(linea);
         String salida = new String(baos.toByteArray());
 
-        Assert.assertEquals(esperado, salida);
+        assertEquals(esperado, salida);
     }
 
     @Test
-    public void debeEscribirDosRenglonesAConsola(){
+    public void debeEscribirDosRenglonesAConsola() {
 
         SalidaConsola s = new SalidaConsola();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -37,6 +38,6 @@ public class SalidaConsolaTest {
         s.escribirLinea(lineaDos);
         String salida = new String(baos.toByteArray());
 
-        Assert.assertEquals(esperado, salida);
+        assertEquals(esperado, salida);
     }
 }

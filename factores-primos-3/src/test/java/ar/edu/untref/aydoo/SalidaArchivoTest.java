@@ -1,11 +1,12 @@
 package ar.edu.untref.aydoo;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import static org.junit.Assert.assertEquals;
 
 public class SalidaArchivoTest {
 
@@ -21,7 +22,7 @@ public class SalidaArchivoTest {
         s.escribirLinea(linea);
         String salida = new String(Files.readAllBytes(Paths.get(archivo)));
 
-        Assert.assertEquals(esperado, salida);
+        assertEquals(esperado, salida);
     }
 
     @Test
@@ -38,7 +39,7 @@ public class SalidaArchivoTest {
         s.escribirLinea(lineaDos);
         String salida = new String(Files.readAllBytes(Paths.get(archivo)));
 
-        Assert.assertEquals(esperado, salida);
+        assertEquals(esperado, salida);
     }
 
     @Test

@@ -1,10 +1,11 @@
 package ar.edu.untref.aydoo;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
+import static org.junit.Assert.assertEquals;
 
 /*
  * Uso ByteArrayOutputStream y PrintStream para tomar las salidas por consola que hace el main.
@@ -25,7 +26,7 @@ public class CalculadoraFactoresPrimos3Test {
         CalculadoraFactoresPrimos3.main(argumentos);
         String salida = new String(baos.toByteArray());
 
-        Assert.assertEquals(esperado, salida);
+        assertEquals(esperado, salida);
     }
 
     @Test
@@ -39,7 +40,7 @@ public class CalculadoraFactoresPrimos3Test {
         CalculadoraFactoresPrimos3.main(argumentos);
         String salida = new String(baos.toByteArray());
 
-        Assert.assertEquals(esperado, salida);
+        assertEquals(esperado, salida);
     }
 
     @Test
@@ -53,7 +54,7 @@ public class CalculadoraFactoresPrimos3Test {
         CalculadoraFactoresPrimos3.main(argumentos);
         String salida = new String(baos.toByteArray());
 
-        Assert.assertEquals(esperado, salida);
+        assertEquals(esperado, salida);
     }
 
     @Test
@@ -67,7 +68,7 @@ public class CalculadoraFactoresPrimos3Test {
         CalculadoraFactoresPrimos3.main(argumentos);
         String salida = new String(baos.toByteArray());
 
-        Assert.assertEquals(esperado, salida);
+        assertEquals(esperado, salida);
     }
 
     @Test
@@ -81,6 +82,6 @@ public class CalculadoraFactoresPrimos3Test {
         CalculadoraFactoresPrimos3.main(argumentos);
         String salida = new String(baos.toByteArray());
 
-        Assert.assertEquals(esperado, salida);
+        assertEquals(esperado, salida);
     }
 }

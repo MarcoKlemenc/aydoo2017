@@ -1,10 +1,11 @@
 package ar.edu.untref.aydoo;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class FormatoPrettyTest {
 
@@ -20,7 +21,7 @@ public class FormatoPrettyTest {
 
         String texto = f.aplicar(factores);
 
-        Assert.assertEquals(esperado, texto);
+        assertEquals(esperado, texto);
     }
 
     @Test
@@ -33,7 +34,7 @@ public class FormatoPrettyTest {
 
         String texto = f.aplicar(factores);
 
-        Assert.assertEquals(esperado, texto);
+        assertEquals(esperado, texto);
     }
 
     @Test
@@ -46,6 +47,6 @@ public class FormatoPrettyTest {
 
         String texto = f.aplicar(factores);
 
-        Assert.assertEquals(esperado, texto);
+        assertEquals(esperado, texto);
     }
 }
