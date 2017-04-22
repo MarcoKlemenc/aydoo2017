@@ -25,42 +25,26 @@ public class CalculadoraFactoresPrimos3 {
         return factoresPrimos;
     }
 
-    public static String formatearPretty(ArrayList<Integer> primos, String argumento) {
-
-        String factores = "Factores primos " + argumento + ": ";
-        for (Integer numero : primos) {
-            factores += numero + " ";
-        }
-        return factores;
-    }
-
-    public static String formatearQuiet(ArrayList<Integer> primos) {
-
-        Collections.reverse(primos);
-        String factores = "";
-        for (Integer numero : primos) {
-            factores += numero.toString() + "\n";
-        }
-        return factores;
-    }
-
     public static final void main(String arg[]) {
 
         ArrayList<Integer> primos = calcularFactoresPrimos(Integer.parseInt(arg[0]));
         if (arg.length > 1 && arg[1].substring(0, 9).equals("--format=")) {
             switch (arg[1].substring(9).toLowerCase()) {
                 case "pretty":
-                    System.out.println(formatearPretty(primos, arg[0]));
+                    FormatoPretty p = new FormatoPretty();
+                    System.out.println(p.aplicar(primos, arg[0]));
                     break;
                 case "quiet":
-                    System.out.println(formatearQuiet(primos));
+                    FormatoQuiet q = new FormatoQuiet();
+                    System.out.println(q.aplicar(primos, arg[0]));
                     break;
                 default:
                     System.out.println("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
                     break;
             }
         } else {
-            System.out.println(formatearPretty(primos, arg[0]));
+            FormatoPretty p = new FormatoPretty();
+            System.out.println(p.aplicar(primos, arg[0]));
         }
     }
 }
