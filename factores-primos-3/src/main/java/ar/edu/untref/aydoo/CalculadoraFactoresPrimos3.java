@@ -28,20 +28,17 @@ public class CalculadoraFactoresPrimos3 {
         CalculadoraFactoresPrimos3 c = new CalculadoraFactoresPrimos3();
         int numero = Integer.parseInt(args[0]);
         List<Integer> primos = c.calcular(numero);
+        CreadorFormato cf = new CreadorFormato();
         Formato f = new FormatoPretty(numero);
         Salida s = new SalidaConsola();
         if (args.length > 1) {
             Map<String, String> mapArgs = c.leerArgumentos(args);
             if (mapArgs.containsKey("--format")) {
-                switch (mapArgs.get("--format")) {
-                    case "pretty":
-                        break;
-                    case "quiet":
-                        f = new FormatoQuiet();
-                        break;
-                    default:
-                        System.out.println("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
-                        return;
+                try {
+                    f = cf.crear(mapArgs.get("--format"), numero);
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                    return;
                 }
             }
         }

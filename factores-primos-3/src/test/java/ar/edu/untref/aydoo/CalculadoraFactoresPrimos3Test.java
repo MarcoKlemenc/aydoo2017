@@ -43,12 +43,12 @@ public class CalculadoraFactoresPrimos3Test {
     }
 
     @Test
-    public void presentaCorrectamenteLosFactoresPrimosDel1EnFormatoPrettyAlIngresarlosPorConsola() {
+    public void presentaCorrectamenteLosFactoresPrimosEnFormatoPrettyAlIngresarlosPorConsola() {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
-        String esperado = "Factores primos 1: \n";
-        String[] argumentos = {"1", "--format=pretty"};
+        String esperado = "Factores primos 27: 3 3 3 \n";
+        String[] argumentos = {"27", "--format=pretty"};
 
         CalculadoraFactoresPrimos3.main(argumentos);
         String salida = new String(baos.toByteArray());
@@ -57,35 +57,7 @@ public class CalculadoraFactoresPrimos3Test {
     }
 
     @Test
-    public void presentaCorrectamenteLosFactoresPrimosDel1EnFormatoPrettyAlIngresarlosPorConsolaConMayusculas() {
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(baos));
-        String esperado = "Factores primos 1: \n";
-        String[] argumentos = {"1", "--format=pReTtY"};
-
-        CalculadoraFactoresPrimos3.main(argumentos);
-        String salida = new String(baos.toByteArray());
-
-        Assert.assertEquals(esperado, salida);
-    }
-
-    @Test
-    public void presentaCorrectamenteLosFactoresPrimosDel1EnFormatoQuietAlIngresarlosPorConsola() {
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(baos));
-        String esperado = "\n";
-        String[] argumentos = {"1", "--format=quiet"};
-
-        CalculadoraFactoresPrimos3.main(argumentos);
-        String salida = new String(baos.toByteArray());
-
-        Assert.assertEquals(esperado, salida);
-    }
-
-    @Test
-    public void presentaCorrectamenteLosFactoresPrimosDel1EnFormatoQuietAlIngresarlosPorConsolaConMayusculas() {
+    public void presentaCorrectamenteLosFactoresPrimosEnFormatoQuietAlIngresarlosPorConsolaConMayusculas() {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
