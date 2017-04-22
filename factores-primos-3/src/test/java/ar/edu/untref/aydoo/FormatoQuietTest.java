@@ -18,7 +18,7 @@ public class FormatoQuietTest {
     @Test
     public void presentaCorrectamenteLosFactoresPrimosDel1EnFormatoQuiet() {
 
-        List<Integer> factores = CalculadoraFactoresPrimos3.calcularFactoresPrimos(1);
+        List<Integer> factores = CalculadoraFactoresPrimos3.calcular(1);
         String esperado = "";
 
         String texto = f.aplicar(factores, "1");
@@ -29,7 +29,7 @@ public class FormatoQuietTest {
     @Test
     public void presentaCorrectamenteLosFactoresPrimosDel2EnFormatoQuiet() {
 
-        List<Integer> factores = CalculadoraFactoresPrimos3.calcularFactoresPrimos(2);
+        List<Integer> factores = CalculadoraFactoresPrimos3.calcular(2);
         String esperado = "2\n";
 
         String texto = f.aplicar(factores, "2");
@@ -40,7 +40,7 @@ public class FormatoQuietTest {
     @Test
     public void presentaCorrectamenteLosFactoresPrimosDel40EnFormatoQuiet() {
 
-        List<Integer> factores = CalculadoraFactoresPrimos3.calcularFactoresPrimos(40);
+        List<Integer> factores = CalculadoraFactoresPrimos3.calcular(40);
         String esperado = "5\n2\n2\n2\n";
 
         String texto = f.aplicar(factores, "40");

@@ -1,7 +1,6 @@
 package ar.edu.untref.aydoo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /*
  * Separé el formato del main y la generación de la lista para poder testearlo por separado.
@@ -10,7 +9,7 @@ import java.util.List;
 
 public class CalculadoraFactoresPrimos3 {
 
-    public static List<Integer> calcularFactoresPrimos(int numero) {
+    public static List<Integer> calcular(int numero) {
 
         List<Integer> factoresPrimos = new ArrayList<Integer>();
         while (numero > 1) {
@@ -25,26 +24,44 @@ public class CalculadoraFactoresPrimos3 {
         return factoresPrimos;
     }
 
-    public static final void main(String arg[]) {
+    public static void main(String[] args) {
 
-        List<Integer> primos = calcularFactoresPrimos(Integer.parseInt(arg[0]));
-        if (arg.length > 1 && arg[1].substring(0, 9).equals("--format=")) {
-            switch (arg[1].substring(9).toLowerCase()) {
-                case "pretty":
-                    FormatoPretty p = new FormatoPretty();
-                    System.out.println(p.aplicar(primos, arg[0]));
-                    break;
-                case "quiet":
-                    FormatoQuiet q = new FormatoQuiet();
-                    System.out.println(q.aplicar(primos, arg[0]));
-                    break;
-                default:
-                    System.out.println("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
-                    break;
+        List<Integer> primos = calcular(Integer.parseInt(args[0]));
+        Formato f;
+        if (args.length > 1) {
+            Map<String, String> mapArgs = leerArgumentos(args);
+            if (mapArgs.containsKey("--format")) {
+                switch (mapArgs.get("--format")) {
+                    case "pretty":
+                        f = new FormatoPretty();
+                        System.out.println(f.aplicar(primos, args[0]));
+                        break;
+                    case "quiet":
+                        f = new FormatoQuiet();
+                        System.out.println(f.aplicar(primos, args[0]));
+                        break;
+                    default:
+                        System.out.println("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
+                        break;
+                }
+            } else {
+                f = new FormatoPretty();
+                System.out.println(f.aplicar(primos, args[0]));
             }
         } else {
-            FormatoPretty p = new FormatoPretty();
-            System.out.println(p.aplicar(primos, arg[0]));
+            f = new FormatoPretty();
+            System.out.println(f.aplicar(primos, args[0]));
         }
+    }
+
+    private static Map<String, String> leerArgumentos(String[] args) {
+
+        Map<String, String> argumentos = new HashMap<String, String>();
+        for (int i = 1; i < args.length; i++) {
+            String arg = args[i];
+            StringTokenizer s = new StringTokenizer(arg, "=");
+            argumentos.put(s.nextToken(), s.nextToken().toLowerCase());
+        }
+        return argumentos;
     }
 }
