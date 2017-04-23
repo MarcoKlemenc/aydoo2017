@@ -17,13 +17,11 @@ public final class CalculadoraFactoresPrimos3 {
 
         int valor = numero;
         List<Integer> factoresPrimos = new ArrayList<Integer>();
-        while (valor > 1) {
-            for (int i = 2; i <= valor; i++) {
-                if (valor % i == 0) {
-                    factoresPrimos.add(i);
-                    valor /= i;
-                    break;
-                }
+        for (int i = 2; i <= valor; i++) {
+            if (valor % i == 0) {
+                factoresPrimos.add(i);
+                valor /= i;
+                i = 1;
             }
         }
         return factoresPrimos;
