@@ -11,6 +11,7 @@ public class SalidaArchivo implements Salida {
     public SalidaArchivo(final String archivo) {
 
         nombreArchivo = archivo;
+        limpiarArchivo();
     }
 
     public void limpiarArchivo() {

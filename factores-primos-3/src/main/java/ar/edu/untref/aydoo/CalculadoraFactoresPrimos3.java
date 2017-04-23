@@ -45,6 +45,9 @@ public final class CalculadoraFactoresPrimos3 {
                 return;
             }
         }
+        if (mapArgs.containsKey("--output-file")) {
+            s = new SalidaArchivo(mapArgs.get("--output-file"));
+        }
         s.escribirLinea(f.aplicar(primos));
     }
 

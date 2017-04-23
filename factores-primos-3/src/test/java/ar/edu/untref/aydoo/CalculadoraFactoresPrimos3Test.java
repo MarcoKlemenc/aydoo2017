@@ -3,7 +3,10 @@ package ar.edu.untref.aydoo;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static org.junit.Assert.assertEquals;
 
@@ -81,6 +84,19 @@ public class CalculadoraFactoresPrimos3Test {
 
         CalculadoraFactoresPrimos3.main(argumentos);
         String salida = new String(baos.toByteArray());
+
+        assertEquals(esperado, salida);
+    }
+
+    @Test
+    public void escribeLosFactoresPrimosEnArchivoAlUsarElArgumento() throws IOException {
+
+        String archivo = "salida.txt";
+        String esperado = "Factores primos 2: 2 \n";
+        String[] argumentos = {"2", "--output-file="+archivo};
+
+        CalculadoraFactoresPrimos3.main(argumentos);
+        String salida = new String(Files.readAllBytes(Paths.get(archivo)));
 
         assertEquals(esperado, salida);
     }
