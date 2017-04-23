@@ -14,7 +14,7 @@ public class SalidaArchivo implements Salida {
         limpiarArchivo();
     }
 
-    public void limpiarArchivo() {
+    private void limpiarArchivo() {
 
         try {
             Files.write(Paths.get(nombreArchivo), "".getBytes());

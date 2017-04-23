@@ -93,10 +93,52 @@ public class CalculadoraFactoresPrimos3Test {
 
         String archivo = "salida.txt";
         String esperado = "Factores primos 2: 2 \n";
-        String[] argumentos = {"2", "--output-file="+archivo};
+        String[] argumentos = {"2", "--output-file=" + archivo};
 
         CalculadoraFactoresPrimos3.main(argumentos);
         String salida = new String(Files.readAllBytes(Paths.get(archivo)));
+
+        assertEquals(esperado, salida);
+    }
+
+    @Test
+    public void presentaLosFactoresPrimosEnOrdenAscendenteAlEspecificarlo() {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(baos));
+        String esperado = "Factores primos 180: 2 2 3 3 5 \n";
+        String[] argumentos = {"180", "--sort=asc"};
+
+        CalculadoraFactoresPrimos3.main(argumentos);
+        String salida = new String(baos.toByteArray());
+
+        assertEquals(esperado, salida);
+    }
+
+    @Test
+    public void presentaLosFactoresPrimosEnOrdenDescendenteAlEspecificarlo() {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(baos));
+        String esperado = "Factores primos 180: 5 3 3 2 2 \n";
+        String[] argumentos = {"180", "--sort=des"};
+
+        CalculadoraFactoresPrimos3.main(argumentos);
+        String salida = new String(baos.toByteArray());
+
+        assertEquals(esperado, salida);
+    }
+
+    @Test
+    public void muestraUnErrorAlEspecificarUnOrdenIncorrecto() {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(baos));
+        String esperado = "Orden no aceptado. Las opciones posibles son: asc o des.\n";
+        String[] argumentos = {"180", "--sort=nada"};
+
+        CalculadoraFactoresPrimos3.main(argumentos);
+        String salida = new String(baos.toByteArray());
 
         assertEquals(esperado, salida);
     }

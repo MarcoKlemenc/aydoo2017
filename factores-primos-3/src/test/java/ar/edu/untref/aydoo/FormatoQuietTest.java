@@ -37,7 +37,7 @@ public class FormatoQuietTest {
     public void presentaCorrectamenteLosFactoresPrimosDel40EnFormatoQuiet() {
 
         List<Integer> factores = Arrays.asList(2, 2, 2, 5);
-        String esperado = "5\n2\n2\n2\n";
+        String esperado = "2\n2\n2\n5\n";
 
         String texto = f.aplicar(factores);
 

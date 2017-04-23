@@ -18,7 +18,6 @@ public class SalidaArchivoTest {
         String esperado = "Hola\n";
 
         String linea = "Hola";
-        s.limpiarArchivo();
         s.escribirLinea(linea);
         String salida = new String(Files.readAllBytes(Paths.get(archivo)));
 
@@ -34,7 +33,6 @@ public class SalidaArchivoTest {
 
         String lineaUno = "Linea 1";
         String lineaDos = "Linea 2";
-        s.limpiarArchivo();
         s.escribirLinea(lineaUno);
         s.escribirLinea(lineaDos);
         String salida = new String(Files.readAllBytes(Paths.get(archivo)));
@@ -48,7 +46,6 @@ public class SalidaArchivoTest {
         String archivo = "";
 
         SalidaArchivo s = new SalidaArchivo(archivo);
-        s.limpiarArchivo();
         s.escribirLinea(archivo);
     }
 }

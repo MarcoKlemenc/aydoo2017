@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.StringTokenizer;
+import java.util.Collections;
 
 public final class CalculadoraFactoresPrimos3 {
 
@@ -48,7 +49,30 @@ public final class CalculadoraFactoresPrimos3 {
         if (mapArgs.containsKey("--output-file")) {
             s = new SalidaArchivo(mapArgs.get("--output-file"));
         }
+        if (mapArgs.containsKey("--sort")) {
+            try {
+                primos = c.ordenar(mapArgs.get("--sort"), primos);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                return;
+            }
+        }
         s.escribirLinea(f.aplicar(primos));
+    }
+
+    private List<Integer> ordenar(final String criterio,
+                                  final List<Integer> original) {
+
+        List<Integer> ordenada = original;
+        if (criterio.equals("asc")) {
+            return ordenada;
+        }
+        if (criterio.equals("des")) {
+            Collections.reverse(ordenada);
+            return ordenada;
+        }
+        throw new IllegalArgumentException("Orden no aceptado. Las opciones "
+                + "posibles son: asc o des.");
     }
 
     private Map<String, String> leerArgumentos(final String[] args) {
