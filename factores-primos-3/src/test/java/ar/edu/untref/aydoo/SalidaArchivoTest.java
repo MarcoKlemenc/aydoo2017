@@ -22,6 +22,8 @@ public class SalidaArchivoTest {
         String salida = new String(Files.readAllBytes(Paths.get(archivo)));
 
         assertEquals(esperado, salida);
+
+        Files.deleteIfExists(Paths.get(archivo));
     }
 
     @Test
@@ -38,6 +40,8 @@ public class SalidaArchivoTest {
         String salida = new String(Files.readAllBytes(Paths.get(archivo)));
 
         assertEquals(esperado, salida);
+
+        Files.deleteIfExists(Paths.get(archivo));
     }
 
     @Test
