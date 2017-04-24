@@ -29,6 +29,7 @@ public final class CalculadoraFactoresPrimos3 {
 
     public static void main(final String[] args) {
 
+        // inicializo las variables, incluyendo formato y salida por defecto
         CalculadoraFactoresPrimos3 c = new CalculadoraFactoresPrimos3();
         int numero = Integer.parseInt(args[0]);
         List<Integer> primos = c.calcular(numero);
@@ -36,6 +37,8 @@ public final class CalculadoraFactoresPrimos3 {
         Formato f = new FormatoPretty(numero);
         Salida s = new SalidaConsola();
         Map<String, String> mapArgs = c.leerArgumentos(args);
+
+        // leo los argumentos posibles
         if (mapArgs.containsKey("--format")) {
             try {
                 f = cf.crear(mapArgs.get("--format"), numero);
@@ -55,6 +58,8 @@ public final class CalculadoraFactoresPrimos3 {
                 return;
             }
         }
+
+        // escribo
         s.escribirLinea(f.aplicar(primos));
     }
 
