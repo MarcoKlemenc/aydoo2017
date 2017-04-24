@@ -1,11 +1,12 @@
 package ar.edu.untref.aydoo;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.StringTokenizer;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.StringTokenizer;
 
 public final class CalculadoraFactoresPrimos3 {
 
@@ -70,7 +71,7 @@ public final class CalculadoraFactoresPrimos3 {
         if (criterio.equals("asc")) {
             return ordenada;
         }
-        if (criterio.equals("des")) {
+        if (criterio.equals("desc")) {
             Collections.reverse(ordenada);
             return ordenada;
         }
@@ -82,9 +83,12 @@ public final class CalculadoraFactoresPrimos3 {
 
         Map<String, String> argumentos = new HashMap<String, String>();
         for (int i = 1; i < args.length; i++) {
-            String arg = args[i];
-            StringTokenizer s = new StringTokenizer(arg, "=");
-            argumentos.put(s.nextToken(), s.nextToken().toLowerCase());
+            try {
+                StringTokenizer s = new StringTokenizer(args[i], "=");
+                argumentos.put(s.nextToken(), s.nextToken().toLowerCase());
+            } catch (NoSuchElementException e) {
+
+            }
         }
         return argumentos;
     }

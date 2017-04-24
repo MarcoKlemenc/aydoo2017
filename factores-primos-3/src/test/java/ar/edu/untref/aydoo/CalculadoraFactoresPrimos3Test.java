@@ -123,7 +123,7 @@ public class CalculadoraFactoresPrimos3Test {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
         String esperado = "Factores primos 180: 5 3 3 2 2 \n";
-        String[] argumentos = {"180", "--sort=des"};
+        String[] argumentos = {"180", "--sort=desc"};
 
         CalculadoraFactoresPrimos3.main(argumentos);
         String salida = new String(baos.toByteArray());
@@ -138,6 +138,34 @@ public class CalculadoraFactoresPrimos3Test {
         System.setOut(new PrintStream(baos));
         String esperado = "Orden no aceptado. Las opciones posibles son: asc o des.\n";
         String[] argumentos = {"180", "--sort=nada"};
+
+        CalculadoraFactoresPrimos3.main(argumentos);
+        String salida = new String(baos.toByteArray());
+
+        assertEquals(esperado, salida);
+    }
+
+    @Test
+    public void ignoraArgumentoSinSignoIgual() {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(baos));
+        String esperado = "Factores primos 180: 2 2 3 3 5 \n";
+        String[] argumentos = {"180", "--format"};
+
+        CalculadoraFactoresPrimos3.main(argumentos);
+        String salida = new String(baos.toByteArray());
+
+        assertEquals(esperado, salida);
+    }
+
+    @Test
+    public void ignoraArgumentoIgualadoANada() {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(baos));
+        String esperado = "Factores primos 180: 2 2 3 3 5 \n";
+        String[] argumentos = {"180", "--output-file="};
 
         CalculadoraFactoresPrimos3.main(argumentos);
         String salida = new String(baos.toByteArray());
