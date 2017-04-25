@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -18,8 +19,9 @@ public class SalidaArchivo implements Salida {
 
         try {
             Files.write(Paths.get(nombreArchivo), "".getBytes());
-        } catch (Exception e) {
-
+        } catch (IOException e) {
+            System.out.println("No se ha podido escribir. Intente con otro "
+                    + "archivo.");
         }
     }
 
@@ -29,8 +31,9 @@ public class SalidaArchivo implements Salida {
         try {
             Files.write(Paths.get(nombreArchivo), valor.getBytes(),
                     StandardOpenOption.APPEND);
-        } catch (Exception e) {
-
+        } catch (IOException e) {
+            System.out.println("No se ha podido escribir. Intente con otro "
+                    + "archivo.");
         }
     }
 }

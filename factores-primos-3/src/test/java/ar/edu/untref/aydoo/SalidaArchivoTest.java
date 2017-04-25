@@ -2,7 +2,9 @@ package ar.edu.untref.aydoo;
 
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -45,11 +47,18 @@ public class SalidaArchivoTest {
     }
 
     @Test
-    public void debeAtraparExcepcionSiNombreEstaEnBlanco() {
+    public void debeMostrarErrorSiNombreEstaEnBlanco() {
 
         String archivo = "";
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(baos));
+        String esperado = "No se ha podido escribir. Intente con otro archivo."
+                + "\nNo se ha podido escribir. Intente con otro archivo.\n";
 
         SalidaArchivo s = new SalidaArchivo(archivo);
         s.escribirLinea(archivo);
+        String salida = new String(baos.toByteArray());
+
+        assertEquals(esperado, salida);
     }
 }
