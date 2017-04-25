@@ -136,7 +136,7 @@ public class CalculadoraFactoresPrimos3Test {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
-        String esperado = "Orden no aceptado. Las opciones posibles son: asc o des.\n";
+        String esperado = "Orden no aceptado. Las opciones posibles son: asc o desc.\n";
         String[] argumentos = {"180", "--sort=nada"};
 
         CalculadoraFactoresPrimos3.main(argumentos);

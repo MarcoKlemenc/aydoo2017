@@ -76,7 +76,7 @@ public final class CalculadoraFactoresPrimos3 {
             return ordenada;
         }
         throw new IllegalArgumentException("Orden no aceptado. Las opciones "
-                + "posibles son: asc o des.");
+                + "posibles son: asc o desc.");
     }
 
     private Map<String, String> leerArgumentos(final String[] args) {
