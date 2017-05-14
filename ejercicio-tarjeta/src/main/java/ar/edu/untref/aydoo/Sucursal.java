@@ -26,15 +26,7 @@ public class Sucursal {
 
     public int aplicarDescuento(final Compra compra, final Tarjeta tarjeta) {
 
-        if (establecimiento.getBeneficioClassic() != null
-                && tarjeta instanceof TarjetaClassic) {
-            return establecimiento.getBeneficioClassic().aplicar(compra);
-        }
-        if (establecimiento.getBeneficioPremium() != null
-                && tarjeta instanceof TarjetaPremium) {
-            return establecimiento.getBeneficioPremium().aplicar(compra);
-        }
-        return compra.calcularMontoBruto();
+        return tarjeta.aplicarDescuento(compra);
     }
 
     public void registrarCompra() {
