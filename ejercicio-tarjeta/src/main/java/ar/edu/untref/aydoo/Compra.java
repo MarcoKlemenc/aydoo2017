@@ -5,8 +5,6 @@ import java.util.SortedMap;
 
 public class Compra {
 
-    private static final int CARACTERES_A_REMOVER = 3;
-
     private SortedMap<Producto, Integer> productos;
     private Sucursal sucursal;
     private Tarjeta tarjeta;
@@ -35,33 +33,18 @@ public class Compra {
         return sucursal.aplicarDescuento(this, tarjeta);
     }
 
-    @Override
-    public String toString() {
-
-        String establecimiento = sucursal.getEstablecimiento().getNombre()
-                + " | ";
-        String productosComprados;
-        if (productos.isEmpty()) {
-            productosComprados = " - ";
-        } else {
-            productosComprados = "";
-            for (SortedMap.Entry<Producto, Integer> e : productos.entrySet()) {
-                productosComprados += e.getKey().getNombre() + " x "
-                        + e.getValue() + " - ";
-            }
-            productosComprados = productosComprados.substring(0,
-                    productosComprados.length() - CARACTERES_A_REMOVER);
-        }
-
-        String montoBruto = " | " + String.valueOf(calcularMontoBruto())
-                + " | ";
-        String beneficio = String.valueOf(calcularMontoBruto()
-                - calcularMontoNeto());
-        return establecimiento + productosComprados + montoBruto + beneficio;
-    }
-
-    public Set<Producto> getProductos() {
+    public Set<Producto> getProductosKeySet() {
 
         return productos.keySet();
+    }
+
+    public SortedMap<Producto, Integer> getProductos() {
+
+        return productos;
+    }
+
+    public Sucursal getSucursal() {
+
+        return sucursal;
     }
 }

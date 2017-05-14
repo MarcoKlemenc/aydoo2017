@@ -24,7 +24,7 @@ public class Beneficio2x1 implements Beneficio {
 
     public int aplicar(final Compra compra) {
 
-        Set<Producto> productos = compra.getProductos();
+        Set<Producto> productos = compra.getProductosKeySet();
         int total = 0;
         for (Producto p : productos) {
             total += p.getPrecio();

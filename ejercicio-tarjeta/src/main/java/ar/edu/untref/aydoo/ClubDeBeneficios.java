@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedMap;
 
 public class ClubDeBeneficios {
+
+    private static final int CARACTERES_A_REMOVER = 3;
 
     private List<Cliente> clientes = new ArrayList<Cliente>();
     private List<Tarjeta> tarjetas = new ArrayList<Tarjeta>();
@@ -57,6 +60,30 @@ public class ClubDeBeneficios {
         return sucursal;
     }
 
+    private String mostrarBeneficioEnTexto(Compra c) {
+
+        String establecimiento = c.getSucursal().getEstablecimiento().getNombre()
+                + " | ";
+        String productosComprados;
+        if (c.getProductosKeySet().isEmpty()) {
+            productosComprados = " - ";
+        } else {
+            productosComprados = "";
+            for (SortedMap.Entry<Producto, Integer> e : c.getProductos().entrySet()) {
+                productosComprados += e.getKey().getNombre() + " x "
+                        + e.getValue() + " - ";
+            }
+            productosComprados = productosComprados.substring(0,
+                    productosComprados.length() - CARACTERES_A_REMOVER);
+        }
+
+        String montoBruto = " | " + String.valueOf(c.calcularMontoBruto())
+                + " | ";
+        String beneficio = String.valueOf(c.calcularMontoBruto()
+                - c.calcularMontoNeto());
+        return establecimiento + productosComprados + montoBruto + beneficio;
+    }
+
     public Map<Cliente, List<String>> buscarBeneficiosObtenidos() {
 
         Map<Cliente, List<String>> beneficiosPorCliente
@@ -64,7 +91,7 @@ public class ClubDeBeneficios {
         for (Cliente c : clientes) {
             List<String> beneficiosDeCliente = new ArrayList<String>();
             for (Compra o : c.getTarjeta().getCompras()) {
-                beneficiosDeCliente.add(o.toString());
+                beneficiosDeCliente.add(mostrarBeneficioEnTexto(o));
             }
             if (!beneficiosDeCliente.isEmpty()) {
                 beneficiosPorCliente.put(c, beneficiosDeCliente);
