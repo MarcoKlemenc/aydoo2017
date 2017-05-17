@@ -39,4 +39,24 @@ public class TarjetaClassicTest {
 
         assertEquals(1, visa.getCompras().size());
     }
+
+    @Test
+    public void debeDarMontoBrutoSiNoHayBeneficioClassic() {
+
+        String nombre = "juan";
+        String email = "juan@gmail.com";
+        Cliente juan = new Cliente(nombre, email);
+        Tarjeta visa = new TarjetaClassic(juan);
+
+        Establecimiento heladeriaFrio = new Establecimiento("frio");
+        Sucursal frioCaseros = new Sucursal("Caseros", heladeriaFrio);
+        Producto helado = new Producto("helado", 10, heladeriaFrio);
+
+        TreeMap<Producto, Integer> productos = new TreeMap<Producto, Integer>();
+        int cantidadDeCompra = 2;
+        productos.put(helado, cantidadDeCompra);
+        Compra unaCompra = new Compra(frioCaseros, visa, productos);
+
+        assertEquals(20, visa.aplicarDescuento(unaCompra));
+    }
 }
