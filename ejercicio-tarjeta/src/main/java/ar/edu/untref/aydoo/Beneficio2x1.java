@@ -10,7 +10,7 @@ public class Beneficio2x1 implements Beneficio {
         establecimiento.setBeneficioPremium(this);
     }
 
-    private int buscarMasBarato(final Set<Producto> productos) {
+    private int buscarMenorPrecio(final Set<Producto> productos) {
 
         int masBarato = -1;
         for (Producto p : productos) {
@@ -29,8 +29,9 @@ public class Beneficio2x1 implements Beneficio {
         for (Producto p : productos) {
             total += p.getPrecio();
         }
-        if (productos.size() >= 2) {
-            total -= buscarMasBarato(productos);
+        int menorPrecio = buscarMenorPrecio(productos);
+        if (productos.size() >= 2 && total - menorPrecio >= 100) {
+            total -= menorPrecio;
         }
         return total;
     }
