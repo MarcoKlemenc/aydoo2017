@@ -1,6 +1,5 @@
 package ar.edu.untref.aydoo;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.SortedMap;
@@ -24,7 +23,7 @@ public class SucursalTest {
     }
 
     @Test
-    public void debeCobrarPrecioBrutoSiNoHayBeneficios(){
+    public void debeCobrarPrecioBrutoSiNoHayBeneficios() {
         Cliente juan = new Cliente("juan", "juan@gmail.com");
         Tarjeta visa = new TarjetaPremium(juan);
         Establecimiento heladeriaFrio = new Establecimiento("frio");
@@ -36,6 +35,6 @@ public class SucursalTest {
         productos.put(helado, cantidad);
         Compra unaCompra = new Compra(frioCaseros, visa, productos);
 
-        Assert.assertEquals(unaCompra.calcularMontoBruto(), unaCompra.calcularMontoNeto());
+        assertEquals(unaCompra.calcularMontoBruto(), unaCompra.calcularMontoNeto());
     }
 }

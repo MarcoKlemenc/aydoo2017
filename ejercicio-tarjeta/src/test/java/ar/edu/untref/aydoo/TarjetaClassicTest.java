@@ -57,6 +57,6 @@ public class TarjetaClassicTest {
         productos.put(helado, cantidadDeCompra);
         Compra unaCompra = new Compra(frioCaseros, visa, productos);
 
-        assertEquals(20, visa.aplicarDescuento(unaCompra));
+        assertEquals(20, visa.aplicarBeneficio(unaCompra));
     }
 }

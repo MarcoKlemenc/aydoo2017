@@ -7,7 +7,7 @@ public class TarjetaClassic extends Tarjeta {
         super(cliente);
     }
 
-    public int aplicarDescuento(final Compra compra) {
+    public int aplicarBeneficio(final Compra compra) {
 
         Beneficio beneficio = compra.getSucursal().getEstablecimiento()
                 .getBeneficioClassic();

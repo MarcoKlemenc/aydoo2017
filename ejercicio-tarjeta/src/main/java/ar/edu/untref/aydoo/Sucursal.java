@@ -26,7 +26,7 @@ public class Sucursal {
 
     public int aplicarDescuento(final Compra compra, final Tarjeta tarjeta) {
 
-        return tarjeta.aplicarDescuento(compra);
+        return tarjeta.aplicarBeneficio(compra);
     }
 
     public void registrarCompra() {

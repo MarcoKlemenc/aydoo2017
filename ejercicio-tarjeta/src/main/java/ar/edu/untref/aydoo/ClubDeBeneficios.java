@@ -10,10 +10,9 @@ public class ClubDeBeneficios {
 
     private static final int CARACTERES_A_REMOVER = 3;
 
-    private List<Cliente> clientes = new ArrayList<Cliente>();
-    private List<Tarjeta> tarjetas = new ArrayList<Tarjeta>();
-    private List<Establecimiento> establecimientos
-            = new ArrayList<Establecimiento>();
+    private List<Cliente> clientes = new ArrayList<>();
+    private List<Tarjeta> tarjetas = new ArrayList<>();
+    private List<Establecimiento> establecimientos = new ArrayList<>();
 
     public void agregar(final Cliente cliente) {
 
@@ -87,10 +86,9 @@ public class ClubDeBeneficios {
 
     public Map<Cliente, List<String>> buscarBeneficiosObtenidos() {
 
-        Map<Cliente, List<String>> beneficiosPorCliente
-                = new HashMap<Cliente, List<String>>();
+        Map<Cliente, List<String>> beneficiosPorCliente = new HashMap<>();
         for (Cliente c : clientes) {
-            List<String> beneficiosDeCliente = new ArrayList<String>();
+            List<String> beneficiosDeCliente = new ArrayList<>();
             for (Compra o : c.getTarjeta().getCompras()) {
                 beneficiosDeCliente.add(mostrarBeneficioEnTexto(o));
             }

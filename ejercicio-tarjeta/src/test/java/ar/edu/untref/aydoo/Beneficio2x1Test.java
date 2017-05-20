@@ -1,6 +1,5 @@
 package ar.edu.untref.aydoo;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.SortedMap;
@@ -48,7 +47,7 @@ public class Beneficio2x1Test {
         Compra compra = new Compra(caseros, visa, productos);
 
         int precioFinal = 120;
-        Assert.assertEquals(precioFinal, beneficio.aplicar(compra));
+        assertEquals(precioFinal, beneficio.aplicar(compra));
     }
 
     @Test
@@ -87,7 +86,7 @@ public class Beneficio2x1Test {
         Compra compra = new Compra(caseros, visa, productos);
 
         int precioFinal = 320;
-        Assert.assertEquals(precioFinal, beneficio.aplicar(compra));
+        assertEquals(precioFinal, beneficio.aplicar(compra));
     }
 
     @Test
@@ -120,7 +119,7 @@ public class Beneficio2x1Test {
         Compra compra = new Compra(caseros, visa, productos);
 
         int precioFinal = 120;
-        Assert.assertEquals(precioFinal, beneficio.aplicar(compra));
+        assertEquals(precioFinal, beneficio.aplicar(compra));
     }
 
     @Test
@@ -149,7 +148,7 @@ public class Beneficio2x1Test {
         Compra compra = new Compra(caseros, visa, productos);
 
         int precioFinal = 90;
-        Assert.assertEquals(precioFinal, beneficio.aplicar(compra));
+        assertEquals(precioFinal, beneficio.aplicar(compra));
     }
 
     @Test
@@ -183,6 +182,6 @@ public class Beneficio2x1Test {
         Compra compra = new Compra(caseros, visa, productos);
 
         int precioFinal = 140;
-        Assert.assertEquals(precioFinal, beneficio.aplicar(compra));
+        assertEquals(precioFinal, beneficio.aplicar(compra));
     }
 }

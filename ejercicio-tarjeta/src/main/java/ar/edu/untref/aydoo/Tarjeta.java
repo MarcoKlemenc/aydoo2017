@@ -30,5 +30,5 @@ abstract class Tarjeta {
         compras.add(compra);
     }
 
-    abstract int aplicarDescuento(Compra compra);
+    abstract int aplicarBeneficio(Compra compra);
 }
