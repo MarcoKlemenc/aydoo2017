@@ -41,4 +41,9 @@ public class Compra {
 
         return sucursal;
     }
+
+    public Tarjeta getTarjeta() {
+
+        return tarjeta;
+    }
 }
