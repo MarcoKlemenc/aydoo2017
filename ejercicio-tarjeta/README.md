@@ -4,3 +4,4 @@ Decisiones tomadas:
 * Solo se puede poseer un beneficio a la vez, y el 2x1 reemplazará a ambos descuentos al aplicarse.
 * Se lanzará una excepción al intentar introducir un porcentaje menor a 5 en el descuento.
 * Se utiliza herencia en tarjetas y beneficios para facilitar la adición de otros a futuro.
+* Si se aplica el beneficio 2x1 a una compra con más de 2 productos, se aplica en base a los dos productos más baratos.

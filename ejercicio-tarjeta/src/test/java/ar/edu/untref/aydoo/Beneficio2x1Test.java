@@ -60,6 +60,45 @@ public class Beneficio2x1Test {
         Beneficio2x1 beneficio = new Beneficio2x1(nike);
 
         String nombreZapatillas = "Zapatillas";
+        int precioZapatillas = 200;
+        Producto zapatillas = new Producto(nombreZapatillas, precioZapatillas, nike);
+
+        String nombreRemera = "Remera";
+        int precioRemera = 120;
+        Producto remera = new Producto(nombreRemera, precioRemera, nike);
+
+        String nombrePelota = "Pelota";
+        int precioPelota = 40;
+        Producto pelota = new Producto(nombrePelota, precioPelota, nike);
+
+        SortedMap<Producto, Integer> productos = new TreeMap<>();
+        productos.put(zapatillas, 1);
+        productos.put(remera, 1);
+        productos.put(pelota, 1);
+
+        String nombreCaseros = "Caseros";
+        Sucursal caseros = new Sucursal(nombreCaseros, nike);
+
+        String nombreCliente = "juan";
+        String email = "juan@gmail.com";
+        Cliente juan = new Cliente(nombreCliente, email);
+        TarjetaClassic visa = new TarjetaClassic(juan);
+
+        Compra compra = new Compra(caseros, visa, productos);
+
+        int precioFinal = 320;
+        Assert.assertEquals(precioFinal, beneficio.aplicar(compra));
+    }
+
+    @Test
+    public void debeAplicarseConTresProductos() {
+
+        String nombreEstablecimiento = "Nike";
+        Establecimiento nike = new Establecimiento(nombreEstablecimiento);
+
+        Beneficio2x1 beneficio = new Beneficio2x1(nike);
+
+        String nombreZapatillas = "Zapatillas";
         int precioZapatillas = 120;
         Producto zapatillas = new Producto(nombreZapatillas, precioZapatillas, nike);
 
@@ -68,8 +107,7 @@ public class Beneficio2x1Test {
         Producto remera = new Producto(nombreRemera, precioRemera, nike);
 
         SortedMap<Producto, Integer> productos = new TreeMap<>();
-        productos.put(zapatillas, 1);
-        productos.put(remera, 1);
+        productos.put(zapatillas, 2);
 
         String nombreCaseros = "Caseros";
         Sucursal caseros = new Sucursal(nombreCaseros, nike);
