@@ -12,6 +12,7 @@ public class IntegracionTest {
 
     @Test
     public void ejemploUnoTest() throws PorcentajeInvalidoException {
+
         String nombreCarlos = "Carlos";
         String mailCarlos = "carlos@gmail.com";
         Cliente carlos = new Cliente(nombreCarlos, mailCarlos);
@@ -75,17 +76,11 @@ public class IntegracionTest {
         Compra compraSeis = new Compra(s2, tarjetaJuan, productosCompraSeis);
 
         Compra compraSiete = new Compra(s1, tarjetaCarlos, compraVacia);
-
         Compra compraOcho = new Compra(s3, tarjetaCarlos, compraVacia);
-
         Compra compraNueve = new Compra(s3, tarjetaCarlos, compraVacia);
-
         Compra compraDiez = new Compra(s3, tarjetaCarlos, compraVacia);
-
         Compra compraOnce = new Compra(s3, tarjetaCarlos, compraVacia);
-
         Compra compraDoce = new Compra(s3, tarjetaCarlos, compraVacia);
-
         Compra compraTrece = new Compra(s3, tarjetaCarlos, compraVacia);
 
         assertEquals(s3, club.buscarSucursalConMasBeneficios());
@@ -130,6 +125,7 @@ public class IntegracionTest {
         club.agregar(mateo);
         club.agregar(jose);
         club.agregar(tarjetaMateo);
+        club.agregar(tarjetaJose);
         club.agregar(elAltillo);
 
         TreeMap<Producto, Integer> productosCompra = new TreeMap<Producto, Integer>();

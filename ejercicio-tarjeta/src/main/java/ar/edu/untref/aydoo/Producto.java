@@ -4,9 +4,9 @@ public class Producto implements Comparable<Producto> {
 
     private final String nombre;
     private final Establecimiento establecimiento;
-    private int precio;
+    private Integer precio;
 
-    public Producto(final String nombreNuevo, final int precioNuevo,
+    public Producto(final String nombreNuevo, final Integer precioNuevo,
                     final Establecimiento establecimientoNuevo) {
 
         this.precio = precioNuevo;
