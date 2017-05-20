@@ -12,7 +12,7 @@ public class Establecimiento {
 
     public Establecimiento(final String nombreNuevo) {
 
-        this.sucursales = new ArrayList<Sucursal>();
+        this.sucursales = new ArrayList<>();
         this.nombre = nombreNuevo;
     }
 
