@@ -7,9 +7,13 @@ public class TarjetaClassic extends Tarjeta {
         super(cliente);
     }
 
-    public int aplicarDescuento(Compra compra) {
+    public int aplicarDescuento(final Compra compra) {
 
-        Beneficio beneficio = compra.getSucursal().getEstablecimiento().getBeneficioClassic();
-        return beneficio != null ? beneficio.aplicar(compra) : compra.calcularMontoBruto();
+        Beneficio beneficio = compra.getSucursal().getEstablecimiento()
+                .getBeneficioClassic();
+        if (beneficio != null) {
+            return beneficio.aplicar(compra);
+        }
+        return compra.calcularMontoBruto();
     }
 }

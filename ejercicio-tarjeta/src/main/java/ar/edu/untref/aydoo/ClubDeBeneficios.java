@@ -60,16 +60,17 @@ public class ClubDeBeneficios {
         return sucursal;
     }
 
-    private String mostrarBeneficioEnTexto(Compra c) {
+    private String mostrarBeneficioEnTexto(final Compra compra) {
 
-        String establecimiento = c.getSucursal().getEstablecimiento().getNombre()
-                + " | ";
+        String establecimiento = compra.getSucursal().getEstablecimiento()
+                .getNombre() + " | ";
         String productosComprados;
-        if (c.getProductosKeySet().isEmpty()) {
+        if (compra.getProductosKeySet().isEmpty()) {
             productosComprados = " - ";
         } else {
             productosComprados = "";
-            for (SortedMap.Entry<Producto, Integer> e : c.getProductos().entrySet()) {
+            for (SortedMap.Entry<Producto, Integer> e : compra.getProductos()
+                    .entrySet()) {
                 productosComprados += e.getKey().getNombre() + " x "
                         + e.getValue() + " - ";
             }
@@ -77,10 +78,10 @@ public class ClubDeBeneficios {
                     productosComprados.length() - CARACTERES_A_REMOVER);
         }
 
-        String montoBruto = " | " + String.valueOf(c.calcularMontoBruto())
+        String montoBruto = " | " + String.valueOf(compra.calcularMontoBruto())
                 + " | ";
-        String beneficio = String.valueOf(c.calcularMontoBruto()
-                - c.calcularMontoNeto());
+        String beneficio = String.valueOf(compra.calcularMontoBruto()
+                - compra.calcularMontoNeto());
         return establecimiento + productosComprados + montoBruto + beneficio;
     }
 
