@@ -24,6 +24,6 @@ abstract class Descuento implements Beneficio {
     public int aplicar(final Compra compra) {
 
         int valorBruto = compra.calcularMontoBruto();
-        return (int) valorBruto - valorBruto * porcentaje / PORCIENTO;
+        return valorBruto - valorBruto * porcentaje / PORCIENTO;
     }
 }

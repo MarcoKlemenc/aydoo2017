@@ -49,8 +49,8 @@ public class Beneficio2x1Test {
         TarjetaClassic tarjeta = new TarjetaClassic(cliente);
         Compra compra = new Compra(sucursal, tarjeta, productos);
 
-        int precioFinal = 120;
-        assertEquals(precioFinal, beneficio.aplicar(compra));
+        int total = 120;
+        assertEquals(total, beneficio.aplicar(compra));
     }
 
     @Test
@@ -82,8 +82,8 @@ public class Beneficio2x1Test {
         TarjetaClassic tarjeta = new TarjetaClassic(cliente);
         Compra compra = new Compra(sucursal, tarjeta, productos);
 
-        int precioFinal = 320;
-        assertEquals(precioFinal, beneficio.aplicar(compra));
+        int total = 320;
+        assertEquals(total, beneficio.aplicar(compra));
     }
 
     @Test
@@ -109,8 +109,8 @@ public class Beneficio2x1Test {
         TarjetaClassic tarjeta = new TarjetaClassic(cliente);
         Compra compra = new Compra(sucursal, tarjeta, productos);
 
-        int precioFinal = 120;
-        assertEquals(precioFinal, beneficio.aplicar(compra));
+        int total = 120;
+        assertEquals(total, beneficio.aplicar(compra));
     }
 
     @Test
@@ -130,8 +130,8 @@ public class Beneficio2x1Test {
         TarjetaClassic tarjeta = new TarjetaClassic(cliente);
         Compra compra = new Compra(sucursal, tarjeta, productos);
 
-        int precioFinal = 90;
-        assertEquals(precioFinal, beneficio.aplicar(compra));
+        int total = 90;
+        assertEquals(total, beneficio.aplicar(compra));
     }
 
     @Test
@@ -157,7 +157,7 @@ public class Beneficio2x1Test {
         TarjetaClassic tarjeta = new TarjetaClassic(cliente);
         Compra compra = new Compra(sucursal, tarjeta, productos);
 
-        int precioFinal = 140;
-        assertEquals(precioFinal, beneficio.aplicar(compra));
+        int total = 140;
+        assertEquals(total, beneficio.aplicar(compra));
     }
 }

@@ -49,8 +49,8 @@ public class DescuentoClassicTest {
         Sucursal sucursal = new Sucursal(null, establecimiento);
         Cliente cliente = new Cliente(null, null);
         Tarjeta tarjeta = new TarjetaClassic(cliente);
-        int descuento = 20;
-        Descuento veintePorciento = new DescuentoClassic(descuento, establecimiento);
+        int porcentaje = 20;
+        Descuento descuento = new DescuentoClassic(porcentaje, establecimiento);
 
         String nombreHelado = "Helado";
         int precio = 10;
@@ -61,6 +61,6 @@ public class DescuentoClassicTest {
         Compra compra = new Compra(sucursal, tarjeta, productos);
 
         int total = 8;
-        assertEquals(total, veintePorciento.aplicar(compra));
+        assertEquals(total, descuento.aplicar(compra));
     }
 }

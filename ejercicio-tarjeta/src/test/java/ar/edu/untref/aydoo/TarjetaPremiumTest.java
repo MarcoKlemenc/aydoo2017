@@ -65,8 +65,8 @@ public class TarjetaPremiumTest {
 
         Establecimiento establecimiento = new Establecimiento(null);
         Sucursal sucursal = new Sucursal(null, establecimiento);
-        int descuento = 20;
-        Descuento veintePorciento = new DescuentoPremium(descuento, establecimiento);
+        int porcentaje = 20;
+        Descuento descuento = new DescuentoPremium(porcentaje, establecimiento);
 
         String nombre = "Helado";
         int precio = 10;

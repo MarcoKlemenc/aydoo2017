@@ -19,9 +19,9 @@ public class ClienteTest {
     public void debeAsignarseUnEmail() {
 
         String email = "juan@gmail.com";
-        Cliente juan = new Cliente(null, email);
+        Cliente cliente = new Cliente(null, email);
 
-        assertEquals(email, juan.getEmail());
+        assertEquals(email, cliente.getEmail());
     }
 
     @Test

@@ -65,19 +65,19 @@ public class CompraTest {
         SortedMap<Producto, Integer> productos = new TreeMap<>();
         int cantidad = 2;
         productos.put(helado, cantidad);
-        Compra unaCompra = new Compra(sucursal, tarjeta, productos);
+        Compra compra = new Compra(sucursal, tarjeta, productos);
 
         int total = 20;
-        assertEquals(total, unaCompra.calcularMontoBruto());
+        assertEquals(total, compra.calcularMontoBruto());
     }
 
     @Test
     public void deberiaCalcularMontoNeto() throws PorcentajeInvalidoException {
 
-        int diez = 10;
-        Descuento diezPorciento = new DescuentoClassic(diez, establecimiento);
+        int porcentaje = 10;
+        Descuento descuento = new DescuentoClassic(porcentaje, establecimiento);
         String nombreLapiz = "Lapiz";
-        Producto lapiz = new Producto(nombreLapiz, diez, establecimiento);
+        Producto lapiz = new Producto(nombreLapiz, porcentaje, establecimiento);
 
         SortedMap<Producto, Integer> productos = new TreeMap<>();
         int cantidad = 2;
@@ -103,17 +103,17 @@ public class CompraTest {
         productos.put(teclado, cantidadTeclado);
         int cantidadMouse = 1;
         productos.put(mouse, cantidadMouse);
-        Compra unaCompra = new Compra(sucursal, tarjeta, productos);
+        Compra compra = new Compra(sucursal, tarjeta, productos);
 
         int total = 250;
-        assertEquals(total, unaCompra.calcularMontoBruto());
+        assertEquals(total, compra.calcularMontoBruto());
     }
 
     @Test
     public void deberiaCalcularMontoNetoParaMasDeUnArticulo() throws PorcentajeInvalidoException {
 
-        int descuento = 20;
-        Descuento veintePorciento = new DescuentoClassic(descuento, establecimiento);
+        int porcentaje = 20;
+        Descuento descuento = new DescuentoClassic(porcentaje, establecimiento);
 
         String nombreTeclado = "Teclado";
         int precioTeclado = 100;
@@ -127,9 +127,9 @@ public class CompraTest {
         productos.put(teclado, cantidadTeclado);
         int cantidadMouse = 2;
         productos.put(mouse, cantidadMouse);
-        Compra unaCompra = new Compra(sucursal, tarjeta, productos);
+        Compra compra = new Compra(sucursal, tarjeta, productos);
 
         int total = 240;
-        assertEquals(total, unaCompra.calcularMontoNeto());
+        assertEquals(total, compra.calcularMontoNeto());
     }
 }
