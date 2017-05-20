@@ -10,7 +10,7 @@ abstract class Tarjeta {
 
     Tarjeta(final Cliente clienteNuevo) {
 
-        this.compras = new ArrayList<Compra>();
+        this.compras = new ArrayList<>();
         this.cliente = clienteNuevo;
         clienteNuevo.setTarjeta(this);
     }

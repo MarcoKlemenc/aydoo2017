@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.TreeMap;
@@ -8,35 +9,74 @@ import static org.junit.Assert.assertEquals;
 
 public class TarjetaPremiumTest {
 
-    @Test
-    public void debeCrearseConCliente() {
+    Cliente cliente;
+    Tarjeta tarjeta;
 
-        String nombre = "juan";
-        String email = "juan@gmail.com";
-        Cliente juan = new Cliente(nombre, email);
+    @Before
+    public void setUp() {
 
-        Tarjeta visa = new TarjetaPremium(juan);
-
-        assertEquals(juan, visa.getCliente());
+        cliente = new Cliente(null, null);
+        tarjeta = new TarjetaPremium(cliente);
     }
 
     @Test
-    public void debeRegistrarseUnaCompra() {
+    public void debeFijarseUnCliente() {
 
-        String nombre = "juan";
-        String email = "juan@gmail.com";
-        Cliente juan = new Cliente(nombre, email);
-        Tarjeta visa = new TarjetaPremium(juan);
+        assertEquals(cliente, tarjeta.getCliente());
+    }
 
-        Establecimiento heladeriaFrio = new Establecimiento("frio");
-        Sucursal frioCaseros = new Sucursal("Caseros", heladeriaFrio);
-        Producto helado = new Producto("helado", 10, heladeriaFrio);
+    @Test
+    public void debeRegistrarUnaCompra() {
 
-        TreeMap<Producto, Integer> productos = new TreeMap<Producto, Integer>();
-        int cantidadDeCompra = 2;
-        productos.put(helado, cantidadDeCompra);
-        Compra unaCompra = new Compra(frioCaseros, visa, productos);
+        Establecimiento establecimiento = new Establecimiento(null);
+        Sucursal sucursal = new Sucursal(null, establecimiento);
 
-        assertEquals(1, visa.getCompras().size());
+        String nombre = "Helado";
+        int precio = 10;
+        Producto helado = new Producto(nombre, precio, establecimiento);
+        TreeMap<Producto, Integer> productos = new TreeMap<>();
+        int cantidad = 2;
+        productos.put(helado, cantidad);
+        Compra compra = new Compra(sucursal, tarjeta, productos);
+
+        assertEquals(compra, tarjeta.getCompras().get(0));
+    }
+
+    @Test
+    public void debeDarMontoBrutoSiNoHayBeneficioPremium() {
+
+        Establecimiento establecimiento = new Establecimiento(null);
+        Sucursal sucursal = new Sucursal(null, establecimiento);
+
+        String nombre = "Helado";
+        int precio = 10;
+        Producto helado = new Producto(nombre, precio, establecimiento);
+        TreeMap<Producto, Integer> productos = new TreeMap<>();
+        int cantidad = 2;
+        productos.put(helado, cantidad);
+        Compra compra = new Compra(sucursal, tarjeta, productos);
+
+        int total = 20;
+        assertEquals(total, tarjeta.aplicarBeneficio(compra));
+    }
+
+    @Test
+    public void debeAplicarBeneficioPremium() throws PorcentajeInvalidoException {
+
+        Establecimiento establecimiento = new Establecimiento(null);
+        Sucursal sucursal = new Sucursal(null, establecimiento);
+        int descuento = 20;
+        Descuento veintePorciento = new DescuentoPremium(descuento, establecimiento);
+
+        String nombre = "Helado";
+        int precio = 10;
+        Producto helado = new Producto(nombre, precio, establecimiento);
+        TreeMap<Producto, Integer> productos = new TreeMap<>();
+        int cantidad = 2;
+        productos.put(helado, cantidad);
+        Compra compra = new Compra(sucursal, tarjeta, productos);
+
+        int total = 16;
+        assertEquals(total, tarjeta.aplicarBeneficio(compra));
     }
 }
