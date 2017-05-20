@@ -1,6 +1,5 @@
 package ar.edu.untref.aydoo;
 
-import java.util.Set;
 import java.util.SortedMap;
 
 public class Compra {
@@ -31,11 +30,6 @@ public class Compra {
     public int calcularMontoNeto() {
 
         return sucursal.aplicarDescuento(this, tarjeta);
-    }
-
-    public Set<Producto> getProductosKeySet() {
-
-        return productos.keySet();
     }
 
     public SortedMap<Producto, Integer> getProductos() {

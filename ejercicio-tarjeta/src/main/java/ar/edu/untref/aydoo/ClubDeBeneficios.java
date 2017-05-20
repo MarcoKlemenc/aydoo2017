@@ -65,7 +65,7 @@ public class ClubDeBeneficios {
         String establecimiento = compra.getSucursal().getEstablecimiento()
                 .getNombre() + " | ";
         String productosComprados;
-        if (compra.getProductosKeySet().isEmpty()) {
+        if (compra.getProductos().isEmpty()) {
             productosComprados = " - ";
         } else {
             productosComprados = "";

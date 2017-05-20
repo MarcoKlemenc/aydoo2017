@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import java.util.Map;
 import java.util.Set;
 
 public class Beneficio2x1 implements Beneficio {
@@ -23,13 +24,16 @@ public class Beneficio2x1 implements Beneficio {
 
     public int aplicar(final Compra compra) {
 
-        Set<Producto> productos = compra.getProductosKeySet();
+        Set<Producto> productos = compra.getProductos().keySet();
         int total = 0;
-        for (Producto p : productos) {
-            total += p.getPrecio();
+        int cantidad = 0;
+        for (Map.Entry<Producto, Integer> e : compra.getProductos()
+                .entrySet()) {
+            total += e.getKey().getPrecio() * e.getValue();
+            cantidad += e.getValue();
         }
         int menorPrecio = buscarMenorPrecio(productos);
-        if (productos.size() >= 2 && total - menorPrecio >= PRECIO_MINIMO) {
+        if (cantidad >= 2 && total - menorPrecio >= PRECIO_MINIMO) {
             total -= menorPrecio;
         }
         return total;
