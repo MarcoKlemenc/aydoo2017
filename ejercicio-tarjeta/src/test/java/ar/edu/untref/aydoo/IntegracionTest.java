@@ -108,6 +108,11 @@ public class IntegracionTest {
         Cliente mateo = new Cliente(nombreMateo, mailMateo);
         Tarjeta tarjetaMateo = new TarjetaClassic(mateo);
 
+        String nombreJose = "Jose";
+        String mailJose = "jose@gmail.com";
+        Cliente jose = new Cliente(nombreJose, mailJose);
+        Tarjeta tarjetaJose = new TarjetaClassic(jose);
+
         String nombreElAltillo = "Libreria el altillo";
         Establecimiento elAltillo = new Establecimiento(nombreElAltillo);
         String nombreSucursal = "Sucursal";
@@ -123,6 +128,7 @@ public class IntegracionTest {
 
         ClubDeBeneficios club = new ClubDeBeneficios();
         club.agregar(mateo);
+        club.agregar(jose);
         club.agregar(tarjetaMateo);
         club.agregar(elAltillo);
 

@@ -12,14 +12,11 @@ public class Beneficio2x1 implements Beneficio {
 
     private int buscarMenorPrecio(final Set<Producto> productos) {
 
-        int masBarato = -1;
+        int menorPrecio = Integer.MAX_VALUE;
         for (Producto p : productos) {
-            int precio = p.getPrecio();
-            if (precio < masBarato || masBarato == -1) {
-                masBarato = precio;
-            }
+            menorPrecio = Math.min(p.getPrecio(), menorPrecio);
         }
-        return masBarato;
+        return menorPrecio;
     }
 
     public int aplicar(final Compra compra) {
