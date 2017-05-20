@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.SortedMap;
@@ -9,32 +10,59 @@ import static org.junit.Assert.assertEquals;
 
 public class SucursalTest {
 
-    @Test
-    public void debeCrearseConNombreYEstablecimiento() {
+    Establecimiento establecimiento;
 
-        String nombreEstablecimiento = "Nike";
-        String nombreSucursal = "Caseros";
-        Establecimiento nike = new Establecimiento(nombreEstablecimiento);
+    @Before
+    public void setUp(){
 
-        Sucursal caseros = new Sucursal(nombreSucursal, nike);
-
-        assertEquals(nombreSucursal, caseros.getNombre());
-        assertEquals(nike, caseros.getEstablecimiento());
+        establecimiento = new Establecimiento(null);
     }
 
     @Test
-    public void debeCobrarPrecioBrutoSiNoHayBeneficios() {
-        Cliente juan = new Cliente("juan", "juan@gmail.com");
-        Tarjeta visa = new TarjetaPremium(juan);
-        Establecimiento heladeriaFrio = new Establecimiento("frio");
-        Sucursal frioCaseros = new Sucursal("Caseros", heladeriaFrio);
-        Producto helado = new Producto("helado", 10, heladeriaFrio);
+    public void debeFijarseUnNombre() {
 
-        SortedMap<Producto, Integer> productos = new TreeMap<Producto, Integer>();
+        String nombreSucursal = "Caseros";
+        Sucursal caseros = new Sucursal(nombreSucursal, establecimiento);
+
+        assertEquals(nombreSucursal, caseros.getNombre());
+    }
+
+    @Test
+    public void debeFijarseUnEstablecimiento() {
+
+        Sucursal sucursal = new Sucursal(null, establecimiento);
+
+        assertEquals(establecimiento, sucursal.getEstablecimiento());
+    }
+
+    @Test
+    public void debeRegistrarUnaCompra() {
+
+        Sucursal sucursal = new Sucursal(null, establecimiento);
+        sucursal.registrarCompra();
+
+        int total = 1;
+        assertEquals(total, sucursal.getCantidadBeneficiosOtorgados());
+    }
+
+    @Test
+    public void debeAplicarDescuento() throws PorcentajeInvalidoException {
+
+        Sucursal sucursal = new Sucursal(null, establecimiento);
+        Cliente cliente = new Cliente(null, null);
+        Tarjeta tarjeta = new TarjetaClassic(cliente);
+        int porcentaje = 40;
+        Beneficio beneficio = new DescuentoClassic(porcentaje, establecimiento);
+
+        String nombreHelado = "Helado";
+        int precio = 10;
+        Producto helado = new Producto(nombreHelado, precio, establecimiento);
+        SortedMap<Producto, Integer> productos = new TreeMap<>();
         int cantidad = 2;
         productos.put(helado, cantidad);
-        Compra unaCompra = new Compra(frioCaseros, visa, productos);
+        Compra compra = new Compra(sucursal, tarjeta, productos);
 
-        assertEquals(unaCompra.calcularMontoBruto(), unaCompra.calcularMontoNeto());
+        int total = 12;
+        assertEquals(total, sucursal.aplicarDescuento(compra, tarjeta));
     }
 }
