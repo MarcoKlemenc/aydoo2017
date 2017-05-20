@@ -7,25 +7,29 @@ import static org.junit.Assert.assertEquals;
 public class ClienteTest {
 
     @Test
-    public void debeCrearseConNombreYMail() {
+    public void debeAsignarseUnNombre() {
 
         String nombre = "juan";
-        String email = "juan@gmail.com";
-        Cliente juan = new Cliente(nombre, email);
+        Cliente juan = new Cliente(nombre, null);
 
         assertEquals(nombre, juan.getNombre());
+    }
+
+    @Test
+    public void debeAsignarseUnEmail() {
+
+        String email = "juan@gmail.com";
+        Cliente juan = new Cliente(null, email);
+
         assertEquals(email, juan.getEmail());
     }
 
     @Test
     public void debeAsignarseUnaTarjeta() {
 
-        String nombre = "juan";
-        String email = "juan@gmail.com";
-        Cliente juan = new Cliente(nombre, email);
+        Cliente cliente = new Cliente(null, null);
+        Tarjeta visa = new TarjetaClassic(cliente);
 
-        Tarjeta visa = new TarjetaClassic(juan);
-
-        assertEquals(visa, juan.getTarjeta());
+        assertEquals(visa, cliente.getTarjeta());
     }
 }
