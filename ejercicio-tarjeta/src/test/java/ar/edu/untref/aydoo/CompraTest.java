@@ -59,9 +59,9 @@ public class CompraTest {
     @Test
     public void deberiaCalcularMontoBruto() {
 
-        String nombreHelado = "Helado";
+        String nombre = "Helado";
         int precio = 10;
-        Producto helado = new Producto(nombreHelado, precio, establecimiento);
+        Producto helado = new Producto(nombre, precio, establecimiento);
         SortedMap<Producto, Integer> productos = new TreeMap<>();
         int cantidad = 2;
         productos.put(helado, cantidad);

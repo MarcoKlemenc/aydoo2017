@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.SortedMap;
 
 public class ClubDeBeneficios {
-
-    private static final int CARACTERES_A_REMOVER = 3;
 
     private List<Cliente> clientes = new ArrayList<>();
     private List<Tarjeta> tarjetas = new ArrayList<>();
@@ -59,38 +56,14 @@ public class ClubDeBeneficios {
         return sucursal;
     }
 
-    private String mostrarBeneficioEnTexto(final Compra compra) {
-
-        String establecimiento = compra.getSucursal().getEstablecimiento()
-                .getNombre() + " | ";
-        String productosComprados;
-        if (compra.getProductos().isEmpty()) {
-            productosComprados = " - ";
-        } else {
-            productosComprados = "";
-            for (SortedMap.Entry<Producto, Integer> e : compra.getProductos()
-                    .entrySet()) {
-                productosComprados += e.getKey().getNombre() + " x "
-                        + e.getValue() + " - ";
-            }
-            productosComprados = productosComprados.substring(0,
-                    productosComprados.length() - CARACTERES_A_REMOVER);
-        }
-
-        String montoBruto = " | " + String.valueOf(compra.calcularMontoBruto())
-                + " | ";
-        String beneficio = String.valueOf(compra.calcularMontoBruto()
-                - compra.calcularMontoNeto());
-        return establecimiento + productosComprados + montoBruto + beneficio;
-    }
-
     public Map<Cliente, List<String>> buscarBeneficiosObtenidos() {
 
+        FormatoCompra formato = new FormatoCompra();
         Map<Cliente, List<String>> beneficiosPorCliente = new HashMap<>();
         for (Cliente c : clientes) {
             List<String> beneficiosDeCliente = new ArrayList<>();
             for (Compra o : c.getTarjeta().getCompras()) {
-                beneficiosDeCliente.add(mostrarBeneficioEnTexto(o));
+                beneficiosDeCliente.add(formato.formatear(o));
             }
             if (!beneficiosDeCliente.isEmpty()) {
                 beneficiosPorCliente.put(c, beneficiosDeCliente);
